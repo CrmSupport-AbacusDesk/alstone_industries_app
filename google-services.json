@@ -1,0 +1,766 @@
+{
+  "project_info": {
+    "project_number": "158421422619",
+    "project_id": "plaza-cables",
+    "storage_bucket": "plaza-cables.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:569dca0d76a1adbd45debe",
+        "android_client_info": {
+          "package_name": "com.Bencardo.abacusdesk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:eaf4eb1a5652297045debe",
+        "android_client_info": {
+          "package_name": "com.Kent_bharat.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:3b719eb65f70869845debe",
+        "android_client_info": {
+          "package_name": "com.abacusdesk.grassim"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:aaff0abe8eaab60445debe",
+        "android_client_info": {
+          "package_name": "com.abacusdesk.magnus_plywood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:3e1ecfc712008ebc45debe",
+        "android_client_info": {
+          "package_name": "com.abacusdesk.plazacables"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:626539cf21eda91945debe",
+        "android_client_info": {
+          "package_name": "com.abacusdesk.pluton"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:fcc025ca38ee954445debe",
+        "android_client_info": {
+          "package_name": "com.abacusdesk.trendy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:7696112f030c5c6b45debe",
+        "android_client_info": {
+          "package_name": "com.agmeco.abacusdesk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:c0c072731d6dfc1745debe",
+        "android_client_info": {
+          "package_name": "com.alstone.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:e3f35234d7173b9c45debe",
+        "android_client_info": {
+          "package_name": "com.app.max_cement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:b796974c171c951b45debe",
+        "android_client_info": {
+          "package_name": "com.austinplywood.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:c0b236233919063345debe",
+        "android_client_info": {
+          "package_name": "com.bonsonelectricals.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:cc5acdd74b39a94545debe",
+        "android_client_info": {
+          "package_name": "com.dexarte.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:7e3de61b5079844545debe",
+        "android_client_info": {
+          "package_name": "com.fortis.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:dff06e0df7306f1945debe",
+        "android_client_info": {
+          "package_name": "com.guru_bath.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:1825a03309de96bc45debe",
+        "android_client_info": {
+          "package_name": "com.interlight.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:341094413c35608645debe",
+        "android_client_info": {
+          "package_name": "com.jupiteraqualines.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:01da0da338edd78245debe",
+        "android_client_info": {
+          "package_name": "com.jwi.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:95da9b56c196ba7a45debe",
+        "android_client_info": {
+          "package_name": "com.srinilink.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:649d441c569d233c45debe",
+        "android_client_info": {
+          "package_name": "com.unicrete.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158421422619:android:dc41cd1a1455f8ae45debe",
+        "android_client_info": {
+          "package_name": "com.vanmply.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBasL6mO9dAw1oRRLdFLI2xfhoyGU2iYA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "158421422619-k00km1ls8riktd64d5fg3qnve5gtsm89.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "158421422619-3hacl442fdp4s6csmpv2lirgi7hp7di3.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.grassim.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,18 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>aboutus-modal</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <div class="main-modal">
+        <div class="modal-box">
+            <h1> {{'Alstone Industries' | translate}}</h1>
+            <h2>{{'Your request to access the  Alstone Industries is under review. You will be able to log in as soon as the overseeing Admin acknowledges your application' | translate}}.</h2>
+            <p>{{'Meanwhile, you can contact us' | translate}} <a href="tel:011-42307700">011-42307700</a> {{'or mail us' | translate}} <span>csd1.wpc@alstoneindia.in</span> {{'if you any question' | translate}}.</p>
+            <div class="modal-cls" (click)="gotoHomePage()">
+                <i class="material-icons">cancel</i>
+            </div>
+        </div>
+    </div>
+</ion-content>
