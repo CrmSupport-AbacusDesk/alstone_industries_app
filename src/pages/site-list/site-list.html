@@ -1,0 +1,88 @@
+<!--
+  Generated template for the SiteListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'Site List' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="{{'Pull to refresh' | translate}}" refreshingSpinner="circles" refreshingText="{{'Refreshing...' | translate}}">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+ 
+  
+
+  <div class="padding16 mb70">
+    <div class="cs-list after-none pb0" [ngClass]="{'dots': row.flag == 1}" *ngFor="let row of data; let i = index;" (click)="goOnSiteDetail(row.id)">
+      <div class="top-block">
+        <p >{{'Date Created' | translate}} - {{row.date_created |  date:'d MMMM y'}}</p>
+        <ion-icon name="arrow-forward"   ios="ios-arrow-forward"></ion-icon>
+      </div>
+      
+      <div class="block-item">
+        <div class="column-blocks">
+          <div class="blocks">
+            <p>{{'Created By' | translate}} : <strong>{{row.created_name | titlecase}}</strong></p>
+          </div>
+        </div>
+        <div class="column-blocks">
+          <div class="blocks">
+            <p>{{'Owner Detail' | translate}} : <strong>{{row.site_owner_name |titlecase}} - {{row.site_owner_contact}}</strong></p>
+          </div>
+        </div>
+        <div class="column-blocks">
+          <div class="blocks">
+            <p>{{'State' | translate}} : <strong>{{row.state}}</strong></p>
+          </div>
+          <div class="blocks">
+            <p>{{'District' | translate}} : <strong>{{row.district}}</strong> </p>
+          </div>
+        </div>
+        <div class="column-blocks">
+          <div class="blocks">
+            <p>{{'City' | translate}} : <strong>{{row.city}}</strong></p>
+          </div>
+          <div class="blocks">
+            <p>{{'Stage' | translate}} : <strong>{{row.stage}}</strong> </p>
+          </div>
+        </div>
+        <div class="column-blocks bg-grey">
+          <div class="blocks">
+            <p><strong>{{'Address' | translate}}: {{row.address | titlecase}}</strong></p>  
+          </div>
+        </div>
+        <div class="column-blocks">
+          <!--  -->
+          <div class="blocks" [ngClass]="{'pur': row.site_potential != 0 , 'no-pur': row.site_potential == 0}" *ngIf="row.site_potential !=0">
+            <span>{{'Purchase Bag' | translate}}: {{row.site_potential}}</span>
+          </div>
+        </div>
+      </div>
+      <!-- <p *ngIf="row.visit_count != 0">Visited</p> -->
+      <!-- [ngClass]="{'higlight': row.purchase_count > 0}" -->
+      
+    </div>
+    
+    <div class="no-history" *ngIf="!data.length">
+      <img src="assets/imgs/history.png">
+      <p>{{'No History' | translate}}</p>
+    </div>
+  </div>
+  
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" *ngIf="flag!=1">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{'Loading more data...' | translate}}">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+  <ion-fab right bottom *ngIf="userType == 5">
+    <button ion-fab  (click)="goOnSiteAdd()"> <ion-icon name="add" ></ion-icon></button>
+  </ion-fab>
+</ion-content>
