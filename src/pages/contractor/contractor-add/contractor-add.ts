@@ -532,6 +532,21 @@ let index=this.Architect_list.findIndex(row=> row.id==this.navParams.data.data.a
     .subscribe(d => { 
       console.log(d);
       this.products = d.products;
+      let index=this.products.filter(row=> row.id==this.navParams.data.data.product_id )
+      console.log(index);
+      if(index != -1 ){
+          console.log(this.products[index]);
+          this.purchaseform.product_id=this.products[index];
+          console.log(this.purchaseform.product_id);
+
+      }
+
+
+
+      // let index=this.products.filter(row=> row.id==this.navParams.data.data.product_id )
+      // console.log(index);
+      
+      // this.purchaseform.product_id = index[0].product_point_group;
     });
   }
 

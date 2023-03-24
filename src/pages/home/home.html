@@ -125,7 +125,7 @@
             </li> -->
             
             
-            <li (click)="scanCoupon()" *ngIf="karigar_detail.user_type != 5 && karigar_detail.status == 'Verified'">
+            <li (click)="scanCoupon()" *ngIf="karigar_detail.user_type != 5 && karigar_detail.user_type != 4">
                 <div class="img-view">
                     <img src="assets/imgs/home-icon/scane.svg">
                 </div>
@@ -139,6 +139,12 @@
                     <img src="assets/imgs/home-icon/payment.svg">
                 </div>
                 <p>{{'Add Purchase' | translate}}</p>
+            </li>
+            <li (click)="goOnArchitectList()" *ngIf="karigar_detail.user_type == 5 ">
+                <div class="img-view">
+                    <img src="assets/imgs/home-icon/architect.png">
+                </div>
+                <p>{{'Architect' | translate}}</p>
             </li>
             <li (click)="goOnPointeListPage()" *ngIf="karigar_detail.user_type !=5">
                 <div class="img-view">

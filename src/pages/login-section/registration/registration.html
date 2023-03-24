@@ -306,7 +306,7 @@
                     <ion-item class="cs-input" [ngClass]="{'error':f.submitted && account_no?.invalid}">
                         <ion-label floating>{{'Account No.' | translate}}</ion-label>
                         <ion-input type="tel" name="account_no " #account_no="ngModel" [(ngModel)]="data.account_no"
-                            (focusout)="check_bank_account(data.account_no)" minlength="9" maxlength="18"></ion-input>
+                            (focusout)="check_bank_account(data.account_no)" minlength="8" maxlength="16"></ion-input>
                     </ion-item>
 
                     

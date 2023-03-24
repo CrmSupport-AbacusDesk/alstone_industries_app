@@ -1,3 +1,4 @@
+import { ArchitectListPage } from './../architect-list/architect-list';
 import { PlumberlistPage } from './../plumberlist/plumberlist';
 import { RedeemTypePage } from './../redeem-type/redeem-type';
 import { DigitalcatalogPage } from './../digitalcatalog/digitalcatalog';
@@ -518,6 +519,9 @@ export class HomePage {
     goOnOffersPage(id) {
         this.navCtrl.push(OffersPage, { 'id': id });
     }
+    goOnArchitectList() {
+        this.navCtrl.push(ArchitectListPage);
+    }
 
     goOnPointeListPage() {
 
@@ -595,7 +599,7 @@ export class HomePage {
         }
         else {
 
-            this.navCtrl.push(PointListPage);
+            this.navCtrl.push(PointListPage,{'user_type':this.karigar_detail.user_type});
         }
 
     }
@@ -985,8 +989,82 @@ export class HomePage {
 
 
     goTOSite(){
+        console.log(this.karigar_detail.status == 'Pending' && this.karigar_detail.user_type ==4);
         
-        this.navCtrl.push(SiteListPage, {"user_type":this.karigar_detail.user_type})
+        if (this.karigar_detail.status == 'Suspect' && this.karigar_detail.user_type == 4 ) {
+            let alert = this.alertCtrl.create({
+                title: 'Sorry!',
+                cssClass: 'action-close',
+                subTitle: "Your current profile status is  <strong class=Suspect>“Suspect”</strong>. You can only see your gift gallery when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-42307700>011-42307700</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();
+            return
+        }
+
+        else if (this.karigar_detail.status == 'Pending' && this.karigar_detail.user_type ==4) {
+            let alert = this.alertCtrl.create({
+                title: 'Sorry!',
+                cssClass: 'action-close status-alert',
+                subTitle: "Your current profile status is  <strong class=Pending>“Pending”</strong>. You can only see your gift gallery when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-42307700>011-42307700</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();
+            return
+        }
+        else if (this.karigar_detail.status == 'Reject' && this.karigar_detail.user_type ==4) {
+            let alert = this.alertCtrl.create({
+                title: 'Sorry!',
+                cssClass: 'action-close status-alert',
+                subTitle: "Your current profile status is  <strong class=Reject>“Reject”</strong>. You can only see your gift gallery when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-42307700>011-42307700</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();
+            return
+        }
+        else{
+            this.navCtrl.push(SiteListPage, {"user_type":this.karigar_detail.user_type})
+
+        }
     }
 
     

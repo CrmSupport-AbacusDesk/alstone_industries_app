@@ -35,11 +35,11 @@ export class ContractorListPage {
   constructor(public navCtrl: NavController, public navParams: NavParams,public dbService:DbserviceProvider, public loadingCtrl:LoadingController,  public translate:TranslateService) {
     this.filter = this.dbService.get_filters();
     this.userType = navParams.get('user_type');
-    if(this.filter.status == undefined)
-    {
-      this.filter.status = 'All';
-    }
-    this.PurchaseList(this.details);
+    // if(this.filter.status == undefined)
+    // {
+    //   this.filter.status = 'All';
+    // }
+    // this.PurchaseList(this.details);
 
   }
   
@@ -51,7 +51,7 @@ export class ContractorListPage {
   }
 
   ionViewWillEnter(){
-    this.PurchaseList('')
+    this.PurchaseList(this.details)
   }
   
   doRefresh (refresher)

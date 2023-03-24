@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>site-detail</ion-title>
+    <ion-title>{{'Site Detail' | translate}}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -77,6 +77,9 @@
       <div class="three-block" *ngIf="getData.site_potential">
         <p>{{'Site Potential(Bags)' | translate}} : <strong>{{getData.site_potential}}</strong> </p>
       </div>
+      <div class="three-block" *ngIf="getData.remark">
+        <p>{{'Remark' | translate}} : <strong>{{getData.remark | titlecase}}</strong> </p>
+      </div>
     </div>
     <ng-container *ngIf="selImages.length">
       <h2 class="mt16">{{'Site Images' | translate}}</h2>
@@ -101,10 +104,11 @@
 
   <ng-container *ngSwitchCase="'order'">
     <div class="padding16">
-      <div class="cs-list" *ngFor="let row of data; let i = index;" (click)="purchaseDetail(row.id)">
+      <!-- (click)="purchaseDetail(row.id)" -->
+      <div class="cs-list" *ngFor="let row of data; let i = index;" >
         <div class="top-block">
           <p><a class="link">#Pur{{row.id}}</a> &nbsp; {{row.date_created |  date:'d MMMM y'}}</p>
-          <ion-icon name="arrow-forward"   ios="ios-arrow-forward"></ion-icon>
+          <!-- <ion-icon name="arrow-forward"   ios="ios-arrow-forward"></ion-icon> -->
         </div>
         <div class="middle-block">
           <div class="three-block pb0">
@@ -129,7 +133,7 @@
           </div>
         </div>        
         
-        <div class="top-block footer-block" *ngIf="userType != 5 && row.architect_points > 0 ">
+        <div class="top-block footer-block" *ngIf="userType == 4 && row.architect_points > 0 ">
           <p>{{'Earned Points' | translate}}: {{row.architect_points}}</p>
         </div>
         

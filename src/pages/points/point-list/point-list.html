@@ -22,7 +22,9 @@
       <ion-segment [(ngModel)]="history">
         
         <ion-segment-button  value="scanned">
-          <span>{{ 'Scan Points' | translate }}</span>
+          <span *ngIf="userType != 4">{{ 'Scan Points' | translate }}</span>
+          <span *ngIf="userType == 4">{{ 'Earn Points' | translate }}</span>
+
 
         </ion-segment-button>
         

@@ -1,3 +1,4 @@
+import { SiteDetailPage } from './../site-detail/site-detail';
 import { ConstantProvider } from './../../providers/constant/constant';
 import { DbserviceProvider } from './../../providers/dbservice/dbservice';
 import { Component, ViewChild } from '@angular/core';
@@ -44,10 +45,13 @@ district_list: any = [];
 city_list: any = [];
 pincode_list: any = [];
 userType:any ="";
+  id: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public service:DbserviceProvider , public loadingCtrl:LoadingController,public actionSheetController: ActionSheetController,public toastCtrl: ToastController,private camera: Camera,public translate:TranslateService,public alertCtrl: AlertController, public constant: ConstantProvider ) {
     this.uploadurl = this.constant.upload_url;
     this.userType = navParams.get('user_type');
+    this.id = navParams.get('id');
+
 
     this.getstatelist();
     if(navParams.data.data){
@@ -57,6 +61,8 @@ userType:any ="";
       this.siteform.city
       this.siteform = JSON.parse(JSON.stringify(navParams.data.data));
      
+this.siteform.id = this.siteform.id;
+console.log(this.siteform.id);
 
       for(let i=0; i<this.siteform.image.length ;i++)
       {
@@ -73,6 +79,7 @@ userType:any ="";
     console.log('ionViewDidLoad SiteAddPage');
     
      if (this.siteform.state) {
+            this.getaddress(this.siteform.pincode)
             this.getDistrictList(this.siteform.state);
             this.getArchitectlist(this.siteform.state)
         }
@@ -139,12 +146,31 @@ userType:any ="";
         this.service.post_rqst({ 'filter': this.filter }, 'app_master/Architect_list').subscribe(r => {
             this.Architect_list = r.architect_user;
             console.log(this.Architect_list);
+           
+
+
+            // let index=this.Architect_list.filter(row=> row.id==this.navParams.data.data.architect_id)
+            // console.log(index);
+            // if(index != -1 ){
+            //     console.log(this.Architect_list[index]);
+            //     this.siteform.architect_id=this.Architect_list[index];
+            //     console.log(this.siteform.architect_id);
+      
+            // }
 
             if(r.sales_user = []){
                 this.siteform.architect_id ='';
                 
             }
-
+            
+            let index=this.Architect_list.findIndex(row=> row.id==this.navParams.data.data.architect_id )
+            console.log(index);
+            if(index != -1 ){
+                console.log(this.Architect_list[index]);
+                this.siteform.architect_id=this.Architect_list[index];
+                console.log(this.siteform.architect_id);
+      
+            }
 
 
         });
@@ -256,8 +282,13 @@ presentLoading()
 
 remove_image(i:any)
 {
+  console.log(i);
   this.selImages.splice(i,1);
+  console.log(this.selImages);
+  
 }
+
+
 
 getaddress(pincode) {
   console.log(pincode)
@@ -331,6 +362,14 @@ getCityList(district_name) {
           console.log(r);
           this.city_list = r['cities'];
 
+          // let index=this.city_list.findIndex(row=> row.id==this.navParams.data.data.city )
+          // console.log(index);
+          // if(index != -1 ){
+          //     console.log(this.city_list[index]);
+          //     this.siteform.city=this.city_list[index];
+          //     console.log(this.siteform.city);
+    
+          // }
           this.pincode_list = r['pins'];
           console.log(this.pincode_list);
       });
@@ -345,16 +384,22 @@ getCityList(district_name) {
 
 submit(){
   
-  // if(this.selImages.length <= 0){
-  //   this.presentToast('Please upload atleast one picture');
-  //   return
-  // }
+  if(this.selImages.length <= 0){
+    this.presentToast('Please upload atleast one picture');
+    return
+  }
+
+
   // for(let i=0; i<this.siteform.architect_id.length;i++ ){
   //   this.siteform.architect_id = this.siteform.architect_id[i].id;
   // }
+  if(this.siteform.id){
+    this.siteform.site_location_id = this.siteform.id;
 
+  }
   this.siteform.architect_id = this.siteform.architect_id.id;
   this.siteform.sales_user_id = this.service.karigar_id;  
+
   this.saveFlag = true;
   this.presentLoading();
   this.service.post_rqst( {'data':this.siteform},'app_master/siteLocationAdd ').subscribe( r =>
@@ -367,7 +412,8 @@ submit(){
       else if(r['status'] == 'UPDATED'){
         this.loading.dismiss();
         this.showUpdate(this.update_succ+"!");
-        this.navCtrl.popTo(SiteListPage);
+        this.navCtrl.push(SiteDetailPage,{'id':this.id});
+        return
       }
     });
   }
@@ -376,7 +422,7 @@ submit(){
   {
     console.log(data);
     
-    this.service.post_rqst({"id":data},"app_karigar/deleteSiteLocationImage")
+    this.service.post_rqst({"id":data},"app_master/deleteSiteLocationImage")
     .subscribe(resp=>{
       console.log(resp);
       this.selImages.splice(index,1)

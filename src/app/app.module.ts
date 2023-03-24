@@ -1,3 +1,5 @@
+import { ArchitectListPageModule } from './../pages/architect-list/architect-list.module';
+import { ArchitectDetailPageModule } from './../pages/architect-detail/architect-detail.module';
 import { SiteListPageModule } from './../pages/site-list/site-list.module';
 import { SiteDetailPageModule } from './../pages/site-detail/site-detail.module';
 import { SiteAddPageModule } from './../pages/site-add/site-add.module';
@@ -160,6 +162,8 @@ export function createTranslateLoader(http: HttpClient) {
         SiteAddPageModule,
         SiteDetailPageModule,
         SiteListPageModule,
+        ArchitectDetailPageModule,
+        ArchitectListPageModule,
         FurnitureIdeasPageModule,
         FaqPageModule,
         FaqAnswerPageModule,

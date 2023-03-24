@@ -21,8 +21,12 @@
                         </div>
                         <a class="cmra-btn"><i class="material-icons" (click)="openeditprofile()">camera_alt</i></a>
                     </div>
-                    <h2>{{karigar_detail.first_name |titlecase}}</h2>
-                    <h6>{{karigar_detail.type}}</h6>
+                    <h2>{{karigar_detail.full_name |titlecase}}</h2>
+                    <h6 *ngIf="karigar_detail.user_type == 1">({{'Carpenter' | translate}})</h6>
+                    <h6 *ngIf="karigar_detail.user_type == 2">({{'Mason' | translate}})</h6>
+                    <h6 *ngIf="karigar_detail.user_type == 3">({{'Fabricator' | translate}})</h6>
+                    <h6 *ngIf="karigar_detail.user_type == 4">({{'Architect' | translate}})</h6>
+
                     <p class="{{karigar_detail.status}}">
                         {{karigar_detail.status}}
                         <i class="material-icons Verified " *ngIf="karigar_detail.status =='Verified'">verified_user </i>
@@ -52,7 +56,7 @@
                         </div>
                         <div class="text-box">
                             <p>{{ 'Date of Birth' | translate}}</p>
-                            <h6>{{(karigar_detail.dob !='') ? (karigar_detail.dob| date:'d MMM,y'):('----')}}</h6>
+                            <h6>{{(karigar_detail.dob !='0000-00-00') ? (karigar_detail.dob| date:'d MMM,y'):('----')}}</h6>
                         </div>
                         <div class="text-box" >
                             <p>{{ 'Date of Anniversary' | translate}}</p>
@@ -70,12 +74,12 @@
                         </div>
                         <div class="text-box">
                             <p>{{'Company Name' | translate}}</p>
-                            <h6>{{karigar_detail.sales_company_name ? karigar_detail.sales_company_name:'N/A'}}</h6>
+                            <h6>{{karigar_detail.sales_user_name ? karigar_detail.sales_user_name:'N/A'}}</h6>
                         </div>
                         
                         <div class="text-box">
                             <p>{{'Mobile No.' | translate}}</p>
-                            <h6>{{karigar_detail.sales_mobile_no ? karigar_detail.sales_mobile_no:'N/A'}}</h6>
+                            <h6>{{karigar_detail.sales_user_mobile_no ? karigar_detail.sales_user_mobile_no:'N/A'}}</h6>
                         </div>
                    
                     </div>
@@ -131,7 +135,7 @@
                     <div class="profile-card" *ngIf="karigar_detail.user_type !=5">
                         <div class="text-center">
                             <h2>{{ 'Referral Code Information' | translate }}</h2>
-                            <a class="share" (click)="ShareApp()"><i class="material-icons">share</i></a>
+                            <a class="share" (click)="share()"><i class="material-icons">share</i></a>
                         </div>
                         
                         <div class="text-box">
@@ -153,7 +157,9 @@
                         </div>
                         <a class="cmra-btn"><i class="material-icons" (click)="openeditprofile()">camera_alt</i></a>
                     </div>
-                    <h2>{{karigar_detail.first_name |titlecase}}</h2>
+                    <h2>{{karigar_detail.full_name |titlecase}}</h2>
+                    <h6 *ngIf="karigar_detail.user_type == 5">({{'Sales Executive' | translate}})</h6>
+
                     <!-- <p class="{{karigar_detail.status}}">
                         {{karigar_detail.status}}
                         <i class="material-icons Verified " *ngIf="karigar_detail.status =='Verified'">verified_user </i>
@@ -184,17 +190,7 @@
                     
                    
                     
-                    <div class="profile-card" *ngIf="karigar_detail.user_type !=5">
-                        <div class="text-center">
-                            <h2>{{ 'Referral Code Information' | translate }}</h2>
-                            <a class="share" (click)="ShareApp()"><i class="material-icons">share</i></a>
-                        </div>
-                        
-                        <div class="text-box">
-                            <p>{{'Referral Code' | translate}}</p>
-                            <h6 style="text-transform: uppercase;">{{karigar_detail.referral_code ? karigar_detail.referral_code : 'N/A'}}</h6>
-                        </div>
-                    </div>
+                   
                 </div>
             </div>
         </ion-content>
