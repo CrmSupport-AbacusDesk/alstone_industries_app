@@ -69,9 +69,8 @@ export class SiteListPage {
     
     this.service.post_rqst( { 'filter': this.filter}, 'app_master/siteLocationList').subscribe( r =>
       {
-        this.loading.dismiss();
         console.log(r);
-               
+        this.loading.dismiss();
         this.data = r.site_locations;
         // console.log(this.data);
         // this.flag = this.data.flag;

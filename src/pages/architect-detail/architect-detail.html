@@ -1,0 +1,65 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>{{'Architect Detail' | translate}}</ion-title>
+        
+    </ion-navbar>
+  </ion-header>
+  <ion-content padding>
+    <div class="profile-container">
+              
+  
+  
+            <div class="user-profile">
+              <div class="dp">
+                  <div class="dp-hidden">
+                      <img src="assets/imgs/man.svg" *ngIf="karigar_detail.profile ==''">
+                      <img src="{{uploadUrl+karigar_detail.profile}}" *ngIf="karigar_detail.profile">
+                  </div>
+              </div>
+              <h2>{{karigar_detail.full_name |titlecase}}</h2>
+              <p class="{{karigar_detail.status}}">
+                  {{karigar_detail.status}}
+                  <i class="material-icons Verified " *ngIf="karigar_detail.status =='Verified'">verified_user </i>
+                  <i class="material-icons Pending " *ngIf="karigar_detail.status =='Pending'">update</i>
+                  <i class="material-icons Suspect " *ngIf="karigar_detail.status =='Suspect'">help</i>
+                  <i class="material-icons Reject " *ngIf="karigar_detail.status =='Reject'">cancel</i>
+              </p>
+              
+              
+          </div>
+          
+
+
+          <div class="profile-card">
+           
+            <div class="text-box">
+                <p>{{ 'Mobile No.' | translate }}</p>
+                <h6>{{karigar_detail.mobile_no}}</h6>
+            </div>
+            <div class="text-box" *ngIf="karigar_detail.whatsapp_mobile_no">
+                <p>{{ 'Whats App Number' | translate }}</p>
+                <h6>{{karigar_detail.whatsapp_mobile_no}}</h6>
+            </div>
+            <div class="text-box"  *ngIf="karigar_detail.email">
+                <p>{{ 'Email ID' | translate }}</p>
+                <h6>{{karigar_detail.email}}</h6>
+            </div>
+            <div class="text-box">
+                <p>{{ 'Date of Birth' | translate}}</p>
+                <h6>{{(karigar_detail.dob !='0000-00-00') ? (karigar_detail.dob| date:'d MMM,y'):('----')}}</h6>
+            </div>
+            <div class="text-box" >
+                <p>{{ 'Date of Anniversary' | translate}}</p>
+                <h6>{{(karigar_detail.doa !='0000-00-00') ? (karigar_detail.doa| date:'d MMM,y'):('N/A')}}</h6>
+            </div>
+            <div class="text-box">
+                <p>{{ 'Address' | translate}}</p>
+                <h6>{{karigar_detail.address |titlecase}} {{karigar_detail.state |titlecase}} {{karigar_detail.district |titlecase}} {{karigar_detail.city |titlecase}} {{karigar_detail.pincode }}</h6>
+            </div>
+        </div>
+   
+
+  </div>
+   
+   
+  </ion-content>

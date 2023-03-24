@@ -1,9 +1,10 @@
 import { DbserviceProvider } from './../../providers/dbservice/dbservice';
 import { Component } from '@angular/core';
-import { IonicPage, Loading, LoadingController, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, Loading, LoadingController, ModalController, NavController, NavParams } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ConstantProvider } from '../../providers/constant/constant';
 import { SiteAddPage } from '../site-add/site-add';
+import { ViewProfilePage } from '../view-profile/view-profile';
 
 /**
  * Generated class for the SiteDetailPage page.
@@ -29,7 +30,7 @@ export class SiteDetailPage {
   filter:any = {};
   userType:any ="";
 
-  constructor(public navCtrl: NavController, public constant: ConstantProvider, public navParams: NavParams,public service : DbserviceProvider,public loadingCtrl:LoadingController, public translate:TranslateService ) {
+  constructor(public navCtrl: NavController, public constant: ConstantProvider, public navParams: NavParams,public service : DbserviceProvider, public modalCtrl:ModalController,public loadingCtrl:LoadingController, public translate:TranslateService ) {
     this.id = this.navParams.get('id');
     this.uploadUrl = this.constant.upload_url;
     this.userType = navParams.get('user_type');
@@ -53,6 +54,11 @@ export class SiteDetailPage {
       });
       this.loading.present();
     })
+  }
+
+  viewProfiePic(id, name, type, add, date)
+  {
+    this.modalCtrl.create(ViewProfilePage, {"id": id,"Image": name, "type":type, 'address':add, 'date':date}).present();
   }
 
   siteDetail(){
@@ -83,10 +89,10 @@ export class SiteDetailPage {
           
           this.data = r.purchase_orders;
 
-          this.data.forEach(item => {
-            if(item.verify_at == 'Dealer') item.user_type = 2;
-            if(item.verify_at == 'SalesTeam') item.user_type = 3;
-          });
+          // this.data.forEach(item => {
+          //   if(item.verify_at == 'Dealer') item.user_type = 2;
+          //   if(item.verify_at == 'SalesTeam') item.user_type = 3;
+          // });
           console.log(this.data);
           
           this.filter.mode = 1;
@@ -105,7 +111,7 @@ export class SiteDetailPage {
       {
         console.log('loading');
         this.filter.limit=this.data.length;
-        this.filter.pc_id = this.service.karigar_id;
+        // this.filter.pc_id = this.service.karigar_id;
         this.service.post_rqst({'filter' : this.filter, 'site_location_id':this.id},'app_master/getSitePurchaseOrder')
         .subscribe( (r) =>
         {
@@ -127,6 +133,6 @@ export class SiteDetailPage {
     {
       
       this.getData.edit_profile= 'edit_profile';
-      this.navCtrl.push(SiteAddPage, {'data':this.getData});
+      this.navCtrl.push(SiteAddPage, {'data':this.getData,'id':this.id,'user_type':this.userType});
     }
 }

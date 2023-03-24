@@ -124,8 +124,8 @@ export class CancelpolicyModalPage {
          
         }
         else if(this.redeemType == 'Cash' && this.data.payment_type == 'UPI ID'){
-            if(!this.data.payment_number){
-                this.showAlert("Payment number required");
+            if(!this.data.upi_id){
+                this.showAlert("UPI ID number required");
                 return;
             }
          
@@ -173,7 +173,7 @@ export class CancelpolicyModalPage {
                 text:'OK',
                 cssClass: 'close-action-sheet',
                 handler:()=>{
-                    this.navCtrl.push(TransactionPage);
+                    // this.navCtrl.push(TransactionPage);
                 }
             }]
         });
@@ -219,6 +219,27 @@ export class CancelpolicyModalPage {
             this.data.account_no='';
             this.data.account_holder_name='';
             this.data.bank_name='';
+
+            
+        }
+        
+        
+    }
+
+
+      
+    myNumber()
+    {
+        console.log(this.data);
+        if(this.data.check3==true)
+        {
+            this.data.upi_id=this.karigar_detail.upi_id;
+           
+
+        }
+        else{
+            this.data.upi_id='';
+           
 
             
         }

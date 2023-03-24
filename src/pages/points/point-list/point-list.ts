@@ -33,10 +33,13 @@ export class PointListPage {
   tokenInfo:any={};
   lang:any='';
   point_transfer: any;
-  
+  userType:any ="";
+
   constructor(public navCtrl: NavController, public navParams: NavParams,public service:DbserviceProvider,public loadingCtrl:LoadingController,private app:App,public storage:Storage,public translate:TranslateService,public db:DbserviceProvider) {
     console.log(this.db);
     console.log(this.db.karigar_info.status);
+    this.userType = navParams.get('user_type');
+
 
     
   }

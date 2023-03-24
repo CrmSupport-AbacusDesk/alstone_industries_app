@@ -228,7 +228,10 @@ export class RegistrationPage {
         //     this.presentToast();
         //     return
         // }
+if(this.data.user_type == 4){
+    this.data.sales_user_id = this.data.sales_user_id.id;
 
+}
 
         this.data.lang = this.lang;
 

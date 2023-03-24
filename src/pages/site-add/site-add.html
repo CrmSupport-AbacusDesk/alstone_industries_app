@@ -158,6 +158,8 @@
                   <ion-option value="G+1">G+1</ion-option>
                   <ion-option value="G+2">G+2</ion-option>
                   <ion-option value="G+3">G+3</ion-option>
+                  <ion-option value="G+4">G+4</ion-option>
+                  <ion-option value="G+5">G+5</ion-option>
                   <ion-option value="Ground Floor">Ground Floor</ion-option>
                 </ion-select>
               </ion-item>
@@ -230,10 +232,10 @@
               <li *ngFor="let row of selImages; let i=index">
                 <img src="{{row.id ? uploadurl+row.image : row.image}}">
                 <span class="cancel-icon">
-                  <i class="material-icons crose-icon" (click)="remove_image(i)">clear</i>
+                  <i class="material-icons crose-icon" (click)="showConfirm(i,row.id)">clear</i>
                 </span>
               </li>
-              <li class="add-bg-1" (click)="takePhoto()">
+              <li class="add-bg-1" (click)="takePhoto()" *ngIf="selImages.length < 10">
                 <i class="material-icons">add</i>
                 <p>{{'Take a Picture' | translate}}</p>
               </li>
