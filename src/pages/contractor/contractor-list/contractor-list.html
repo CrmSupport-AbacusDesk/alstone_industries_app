@@ -6,13 +6,13 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>{{ 'Purchase Points List' | translate }} </ion-title>
+    <ion-title>{{ 'Purchase List' | translate }} </ion-title>
   </ion-navbar>
   
   <ion-toolbar color="white" >
     <div class="ion-tab-btn">
       <ion-segment [(ngModel)]="details" >
-        <!-- <ion-segment-button (click)="filter = {}; filter.status = 'All'; PurchaseList ()" [ngClass]="{'active': filter.status == 'All'}">
+        <!-- <ion-segment-button value="All"  (click)="PurchaseList (details)">
           {{ 'All' | translate }}  ({{all_count}})
         </ion-segment-button> -->
         <!-- click)="filter = {}; filter.status = 'Pending'; PurchaseList ()" [ngClass]="{'active': filter.status == 'Pending'}" -->

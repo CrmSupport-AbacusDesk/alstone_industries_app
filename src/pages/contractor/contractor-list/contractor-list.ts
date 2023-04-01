@@ -50,9 +50,9 @@ export class ContractorListPage {
     this.PurchaseList(this.details);
   }
 
-  ionViewWillEnter(){
-    this.PurchaseList(this.details)
-  }
+  // ionViewWillEnter(){
+  //   this.PurchaseList(this.details)
+  // }
   
   doRefresh (refresher)
   {
@@ -136,13 +136,22 @@ export class ContractorListPage {
       this.filter.mode = 0;
       this.filter.limit = 0;
       this.filter.status =  status;
-      this.dbService.post_rqst( {'sales_user_id':this.dbService.karigar_id, 'filter': this.filter}, 'app_master/purchaseList').subscribe( r =>
+      if(this.userType == 5){
+        this.filter.sales_user_id = this.dbService.karigar_id;
+      }
+      if(this.userType == 4){
+        this.filter.architect_id = this.dbService.karigar_id;
+
+      }
+      
+
+      this.dbService.post_rqst( {'filter': this.filter}, 'app_master/purchaseList').subscribe( r =>
         {
           this.loading.dismiss();
          
           this.data = r.purchase_orders;
           this.filter.mode = 1;
-          this.all_count = r.all_count;
+          this.all_count = r.purchase_count;
           this.pending_count = r.pending_count;
           this.verified_count = r.verified_count;
           this.reject_count = r.rejected_count;

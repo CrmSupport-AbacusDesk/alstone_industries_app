@@ -10,7 +10,9 @@
     <div  class="video" *ngFor="let list of video_list;let i=index">
         <iframe [src]="list.url" width="100%" height="180" rameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         <div class="vid-text">
-            <P>{{lang != 'en' ? list.hin_desc : list.desc}}</P>
+            <!-- <P>{{lang != 'en' ? list.hin_desc : list.desc}}</P> -->
+            <P>{{list.desc}}</P>
+
         </div>
     </div>
     </div>

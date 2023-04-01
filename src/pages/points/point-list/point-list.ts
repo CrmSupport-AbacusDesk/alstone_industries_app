@@ -14,6 +14,7 @@ import * as jwt_decode from "jwt-decode";
 })
 export class PointListPage {
   coupon_list:any=[];
+  purchase_list:any=[];
   company_point_transfer:any=[];
 
 
@@ -99,6 +100,7 @@ export class PointListPage {
         console.log(r);
         this.loading.dismiss();
         this.coupon_list=r['coupon'];
+        this.purchase_list=r['architect_purchase'];
         this.welcomePoint=r['welcome_points'];
         this.company_point_transfer=r['company_point_transfer'];
 

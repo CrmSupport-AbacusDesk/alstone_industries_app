@@ -24,14 +24,9 @@
     <preference name="ShowSplashScreen" value="true" />
     <preference name="AutoHideSplashScreen" value="false" />
     <preference name="FadeSplashScreen" value="true" />
-    <queries>
-        <intent>
-            <action android:name="android.media.action.IMAGE_CAPTURE" />
-        </intent>
-        <intent>
-            <action android:name="android.intent.action.GET_CONTENT" />
-        </intent>
-    </queries>
+    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+    <preference name="AndroidXEnabled" value="true" />
+   
     <platform name="android">
         <allow-intent href="market:*" />
         <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -64,4 +59,14 @@
     </plugin>
     <plugin name="cordova-plugin-device-orientation" spec="2.0.1" />
     <engine name="browser" spec="6.0.0" />
+     <config-file parent="/*" target="AndroidManifest.xml">
+        <queries>
+            <intent>
+                <action android:name="android.media.action.IMAGE_CAPTURE" />
+            </intent>
+            <intent>
+                <action android:name="android.intent.action.GET_CONTENT" />
+            </intent>
+        </queries>
+    </config-file>
 </widget>

@@ -76,7 +76,7 @@ console.log(navParams.data.data);
     
     this.siteList();
     this.getProducts();
-    this.getArchitectlist('');
+    // this.getArchitectlist('');
    
     this.translate.get("Camera")
     .subscribe(resp=>{
@@ -483,6 +483,7 @@ siteList(){
     {
       console.log(r);
       this.locations = r.site_locations;
+      // this.getArchitectlist(this.locations.architect_id,'')
      // let index=this.locations.findIndex(row=> row.architect_id==this.navParams.data.data.architect_id )
       // console.log(index);
       // if(index != -1 ){
@@ -495,12 +496,10 @@ siteList(){
     return this.locations
   }
 
-  getArchitectlist(state) {
-    console.log(state);
-
+  getArchitectlist(id) {
+    console.log(id);
     this.filter.limit = 0;
-    this.filter.state = state;
-   
+   this.filter.architect_id = id;
 
         this.dbService.post_rqst({ 'filter': this.filter }, 'app_master/Architect_list').subscribe(r => {
             this.Architect_list = r.architect_user;
@@ -509,14 +508,17 @@ siteList(){
               this.purchaseform.architect_id ='';
               
           }
-let index=this.Architect_list.findIndex(row=> row.id==this.navParams.data.data.architect_id )
-      console.log(index);
-      if(index != -1 ){
-          console.log(this.Architect_list[index]);
-          this.purchaseform.architect_id=this.Architect_list[index];
-          console.log(this.purchaseform.architect_id);
+          if(this.navParams.data ){
+            let index=this.Architect_list.findIndex(row=> row.id==this.navParams.data.data.architect_id )
+            console.log(index);
+            if(index != -1 ){
+                console.log(this.Architect_list[index]);
+                this.purchaseform.architect_id=this.Architect_list[index];
+                console.log(this.purchaseform.architect_id);
+      
+            }
+          }
 
-      }
            
 
 
@@ -532,14 +534,17 @@ let index=this.Architect_list.findIndex(row=> row.id==this.navParams.data.data.a
     .subscribe(d => { 
       console.log(d);
       this.products = d.products;
-      let index=this.products.filter(row=> row.id==this.navParams.data.data.product_id )
-      console.log(index);
-      if(index != -1 ){
-          console.log(this.products[index]);
-          this.purchaseform.product_id=this.products[index];
-          console.log(this.purchaseform.product_id);
-
+      if(this.navParams.data){
+        let index=this.products.findIndex(row=> row.id==this.navParams.data.data.product_id )
+        console.log(index);
+        if(index != -1 ){
+            console.log(this.products[index]);
+            this.purchaseform.product_id=this.products[index];
+            console.log(this.purchaseform.product_id);
+  
+        }
       }
+     
 
 
 
@@ -601,11 +606,12 @@ let index=this.Architect_list.findIndex(row=> row.id==this.navParams.data.data.a
 
 
   submit(){
-console.log(this.purchaseform.architect_id);
    
       this.purchaseform.sales_user_id = this.dbService.karigar_id;
     this.purchaseform.site_location_id = this.purchaseform.site_location_id.id;
     this.purchaseform.architect_id = this.purchaseform.architect_id.id;
+    this.purchaseform.product_id = this.purchaseform.product_id.id;
+
 
     
     this.saveFlag = true;
@@ -614,13 +620,13 @@ console.log(this.purchaseform.architect_id);
     this.dbService.post_rqst( {'data':this.purchaseform},'app_master/addPurchaseOrder').subscribe( r =>
       {
         if(r['status'] == 'SUCCESS'){
-          this.showUpdate(this.save_succ+"!");
+          this.showUpdate(this.save_succ+"Purchase save successfully");
           this.loading.dismiss();
           
           this.navCtrl.popTo(ContractorListPage);
         }
         else if(r['status'] == 'UPDATED'){
-          this.showUpdate(this.update_succ+"!");
+          this.showUpdate(this.update_succ+"Purchase update successfully");
           this.loading.dismiss();
           this.navCtrl.popTo(ContractorListPage);
         }

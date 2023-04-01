@@ -14,7 +14,9 @@
             </div>
             <div class="errow">
                 <div class="list-tags">
-                    <h1>{{lang != 'en'? list.hin_title : list.title |titlecase}}</h1>
+                    <!-- <h1>{{lang != 'en'? list.hin_title : list.title |titlecase}}</h1> -->
+                    <h1>{{list.title |titlecase}}</h1>
+
                     <p>{{'Valid Upto' | translate}} : {{list.end_date | date:'d MMMM y'}}</p>
                 </div>
                 <i class="material-icons mr10">trending_flat</i>

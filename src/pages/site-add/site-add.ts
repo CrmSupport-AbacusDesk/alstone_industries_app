@@ -127,7 +127,7 @@ console.log(this.siteform.id);
     this.translate.get("Success")
     .subscribe(resp=>{
       let alert = this.alertCtrl.create({
-        title:resp+'!',
+        title:resp+'',
         cssClass:'action-close',
         subTitle: text,
         buttons: [this.ok]
@@ -384,10 +384,10 @@ getCityList(district_name) {
 
 submit(){
   
-  if(this.selImages.length <= 0){
-    this.presentToast('Please upload atleast one picture');
-    return
-  }
+  // if(this.selImages.length <= 0){
+  //   this.presentToast('Please upload atleast one picture');
+  //   return
+  // }
 
 
   // for(let i=0; i<this.siteform.architect_id.length;i++ ){
@@ -406,13 +406,15 @@ submit(){
     {
       if(r['status'] == 'SUCCESS'){
         this.loading.dismiss();
-        this.showUpdate(this.save_succ+"!");
-        this.navCtrl.popTo(SiteListPage);
+        this.showUpdate("Site Add Successfully");
+        // this.navCtrl.popTo(SiteListPage);
+        this.navCtrl.push(SiteListPage,{'user_type': this.userType});
+
       }
       else if(r['status'] == 'UPDATED'){
         this.loading.dismiss();
-        this.showUpdate(this.update_succ+"!");
-        this.navCtrl.push(SiteDetailPage,{'id':this.id});
+        this.showUpdate("Site Update Successfully");
+        this.navCtrl.push(SiteDetailPage,{'id':this.id,'user_type': this.userType });
         return
       }
     });
