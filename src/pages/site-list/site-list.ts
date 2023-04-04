@@ -65,8 +65,13 @@ export class SiteListPage {
 
   siteList(){
     this.filter.limit = 0;
+  if(this.userType == 4){
+this.filter.architect_id = this.service.karigar_id;
+  }
+  if(this.userType == 5){
+    this.filter.sales_user_id = this.service.karigar_id;
+      }
   
-    
     this.service.post_rqst( { 'filter': this.filter}, 'app_master/siteLocationList').subscribe( r =>
       {
         console.log(r);

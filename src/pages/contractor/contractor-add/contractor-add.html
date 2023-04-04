@@ -136,10 +136,10 @@
                 itemValueField="id"
                 itemTextField="address"
                 [hasVirtualScroll]="true"
-                
+                (onChange)="getArchitectlist(purchaseform.site_location_id.architect_id)"
                 [canSearch]="true" required>
               </ionic-selectable>
-              <!-- (onChange)="func($event)" -->
+              
             </ion-item>
             <div *ngIf="f.submitted && site_location_id.invalid" class="invalid-feedback">
               <div *ngIf="site_location_id.errors.required">{{'Field is Required' | translate}}</div>
@@ -164,7 +164,7 @@
             
             
             
-            <ion-item class="cs-select" [ngClass]="{'error':f.submitted && product_id?.invalid}">
+            <!-- <ion-item class="cs-select" [ngClass]="{'error':f.submitted && product_id?.invalid}">
               <ion-label>{{'Product' | translate}}*</ion-label>
               <ion-select  [(ngModel)]="purchaseform.product_id" name="product_id" #product_id="ngModel" required>
                 <ion-option [value]="row.id" *ngFor="let row of products">{{row.product_point_group | titlecase}}</ion-option>
@@ -172,7 +172,22 @@
             </ion-item>
             <div *ngIf="f.submitted && product_id.invalid" class="invalid-feedback">
               <div *ngIf="product_id.errors.required">{{'Field is Required' | translate}}</div>
-            </div>
+            </div> -->
+
+
+
+            <ion-item class="cs-input" [ngClass]="{'error':f.submitted && product_id?.invalid}"
+            >
+            <ion-label floating>{{'Select Product' | translate}}*</ion-label>
+            <ionic-selectable item-content [(ngModel)]="purchaseform.product_id" #product_id="ngModel"
+                [items]="products" name="product_id" itemValueField="id" 
+                itemTextField="product_point_group" [hasVirtualScroll]="true" [canSearch]="true" required>
+            </ionic-selectable>
+        </ion-item>
+              <div *ngIf="f.submitted && product_id.invalid" class="invalid-feedback">
+                <div *ngIf="product_id.errors.required">{{'Field is Required' | translate}}</div>
+              </div>
+
             
             <ion-item class="cs-input" [ngClass]="{'error':f.submitted && qty?.invalid}">
               <ion-label floating>{{'Quantity' | translate}}*</ion-label>

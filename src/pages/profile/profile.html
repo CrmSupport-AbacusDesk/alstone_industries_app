@@ -62,6 +62,10 @@
                             <p>{{ 'Date of Anniversary' | translate}}</p>
                             <h6>{{(karigar_detail.doa !='0000-00-00') ? (karigar_detail.doa| date:'d MMM,y'):('N/A')}}</h6>
                         </div>
+                        <div class="text-box"  *ngIf="karigar_detail.upi_id">
+                            <p>{{ 'UPI ID' | translate }}</p>
+                            <h6>{{karigar_detail.upi_id ? karigar_detail.upi_id : 'N/A'}}</h6>
+                        </div>
                         <div class="text-box">
                             <p>{{ 'Address' | translate}}</p>
                             <h6>{{karigar_detail.address |titlecase}} {{karigar_detail.state |titlecase}} {{karigar_detail.district |titlecase}} {{karigar_detail.city |titlecase}} {{karigar_detail.pincode }}</h6>

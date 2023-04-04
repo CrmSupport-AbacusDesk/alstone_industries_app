@@ -114,7 +114,9 @@
                     <img src="assets/imgs/home-icon/construction.png">
                 </div>
                 <!-- [ngClass]="{'dots': sitePending > 0}" -->
-                <p >{{'Site' | translate}}</p>
+                <p *ngIf="karigar_detail.user_type == 4" >{{'View Site' | translate}}</p>
+                <p *ngIf="karigar_detail.user_type == 5">{{'Site' | translate}}</p>
+
             </li>
 
             <!-- <li (click)="goTOPurchase()">
@@ -134,11 +136,12 @@
             
           
 
-            <li (click)="goOnPurchaseListPage()" *ngIf="karigar_detail.user_type == 5">
+            <li (click)="goOnPurchaseListPage()" *ngIf="karigar_detail.user_type == 5 || karigar_detail.user_type == 4">
                 <div class="img-view">
                     <img src="assets/imgs/home-icon/payment.svg">
                 </div>
-                <p>{{'Add Purchase' | translate}}</p>
+                <p *ngIf="karigar_detail.user_type == 4" >{{'View Purchase' | translate}}</p>
+                <p *ngIf="karigar_detail.user_type == 5">{{'Add Purchase' | translate}}</p>
             </li>
             <li (click)="goOnArchitectList()" *ngIf="karigar_detail.user_type == 5 ">
                 <div class="img-view">

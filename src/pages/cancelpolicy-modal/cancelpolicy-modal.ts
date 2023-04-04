@@ -45,7 +45,7 @@ export class CancelpolicyModalPage {
         this.karigar_id = this.navParams.get('karigar_id');
         this.gift_id = this.navParams.get('gift_id');
         this.UserType=this.service.karigar_info.user_type;
-        this.data.payment_type= "Paytm";
+        this.data.payment_type= "Bank Transfer";
         if(this.redeemType == 'gift'){
             this.data.payment_type= "Gift";
         }
@@ -99,10 +99,10 @@ export class CancelpolicyModalPage {
         }
     }
     
+    saveFlag : boolean= false;
     submit()
     {
         
-        this.presentLoading();
         console.log(this.data);
         
          if(!this.otp_value){
@@ -125,7 +125,7 @@ export class CancelpolicyModalPage {
         }
         else if(this.redeemType == 'Cash' && this.data.payment_type == 'UPI ID'){
             if(!this.data.upi_id){
-                this.showAlert("UPI ID number required");
+                this.showAlert("Please Enter UPI ID");
                 return;
             }
          
@@ -139,12 +139,14 @@ export class CancelpolicyModalPage {
         this.data.redeem_type = this.redeemType
         this.data.redeem_amount=  this.redeemPoint
         this.data.offer_id = this.gift_detail.offer_id,
+        this.presentLoading();
+this.saveFlag = true;
         console.log('data');
         this.service.post_rqst( {'data':this.data},'app_karigar/redeemRequest')
         .subscribe( (r) =>
         {
-            this.loading.dismiss();
             console.log(r);
+            this.loading.dismiss();
             if(r['status']=="SUCCESS")
             {
                 // this.navCtrl.setRoot(TabsPage,{index:'3'});

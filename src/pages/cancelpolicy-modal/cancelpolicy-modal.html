@@ -111,8 +111,8 @@
                                 </ion-list>
                             </div>
                         </div>
-                        <ng-container *ngIf="karigar_detail.account_holder_name == '' || karigar_detail.bank_name=='' || karigar_detail.account_no=='' || karigar_detail.ifsc_code==''">
-                            <!-- <h1>{{'Bank Information' | translate}}</h1> -->
+                        <!-- <ng-container *ngIf="data.account_holder_name == '' || data.bank_name=='' || data.account_no=='' || data.ifsc_code==''">
+                            <h1>{{'Bank Information' | translate}}</h1>
                             <div class="alert-card">
                                 <table>
                                     <tr>
@@ -124,7 +124,7 @@
                                   
                                 </table>
                             </div>
-                        </ng-container>
+                        </ng-container> -->
 
                     </ng-container>
 
@@ -196,7 +196,7 @@
                 <div class="footer-btn">
                     <a class="outline-btn" (click)="dismiss()">{{'No' | translate}}</a>
                     <button class="fill-btn"
-                        [disabled]="!data.check ||!data.otp ||!otp_value"
+                        [disabled]="!data.check ||!data.otp ||!otp_value || saveFlag == true"
                         (click)="submit()">{{'Yes' | translate}}</button>
                         <!-- (click)="f.form.valid && submit()" -->
                 </div>

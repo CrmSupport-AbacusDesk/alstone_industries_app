@@ -142,10 +142,11 @@
 
 
             <ng-container>
+              <!-- (keypress)="numeric_Number($event)" -->
               <ion-item class="cs-input" [ngClass]="{'error':f.submitted && project_size?.invalid}">
                 <ion-label floating>{{'Project Size (Cons. Area) Sq. Ft' | translate}}*</ion-label>
-                <ion-input type='tel' name="project_size" [(ngModel)]="siteform.project_size"
-                  (keypress)="numeric_Number($event)" #project_size="ngModel" required></ion-input>
+                <ion-input type='text' name="project_size" [(ngModel)]="siteform.project_size"
+                   #project_size="ngModel" required></ion-input>
               </ion-item>
               <div *ngIf="f.submitted && project_size.invalid" class="invalid-feedback">
                 <div *ngIf="project_size.errors.required">{{'Field is Required' | translate}}</div>

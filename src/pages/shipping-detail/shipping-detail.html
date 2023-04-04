@@ -130,9 +130,9 @@
                 <td>{{'Payment Type' | translate}}</td>
                 <td>{{karigar_gift.payment_type}}</td>
             </tr>
-            <tr *ngIf="karigar_gift.payment_number">
-                <td>{{'Payment Number' | translate}}</td>
-                <td>{{karigar_gift.payment_number}}</td>
+            <tr *ngIf="karigar_gift.upi_id">
+                <td>{{'UPI ID Number' | translate}}</td>
+                <td>{{karigar_gift.upi_id ? karigar_gift.upi_id : 'N/A'}}</td>
             </tr>
             <tr *ngIf="karigar_gift.account_holder_name">
                 <td>{{'Account Holder Name' | translate}}</td>
