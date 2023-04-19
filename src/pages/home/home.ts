@@ -1,3 +1,4 @@
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
 import { ArchitectListPage } from './../architect-list/architect-list';
 import { PlumberlistPage } from './../plumberlist/plumberlist';
 import { RedeemTypePage } from './../redeem-type/redeem-type';
@@ -40,6 +41,9 @@ import { ArrivalProductPage } from '../arrival-product/arrival-product';
 import { OfferProductPage } from '../offer-product/offer-product';
 import { ContractorListPage } from '../contractor/contractor-list/contractor-list';
 import { SiteListPage } from '../site-list/site-list';
+import { Super30Page } from '../super30/super30';
+import { Geolocation } from '@ionic-native/geolocation';
+
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
@@ -69,7 +73,7 @@ export class HomePage {
 
 
 
-    constructor(public navCtrl: NavController, public app: App, public service: DbserviceProvider, public loadingCtrl: LoadingController, public storage: Storage, private barcodeScanner: BarcodeScanner, public alertCtrl: AlertController, public modalCtrl: ModalController, private push: Push, public translate: TranslateService, public constant: ConstantProvider, public socialSharing: SocialSharing) {
+    constructor(public navCtrl: NavController,public locationaccuracy: LocationAccuracy,private geolocation: Geolocation, public app: App, public service: DbserviceProvider, public loadingCtrl: LoadingController, public storage: Storage, private barcodeScanner: BarcodeScanner, public alertCtrl: AlertController, public modalCtrl: ModalController, private push: Push, public translate: TranslateService, public constant: ConstantProvider, public socialSharing: SocialSharing) {
         this.presentLoading();
 
         this.initPushNotification();
@@ -144,6 +148,8 @@ export class HomePage {
     value: string = '';
     qr_count: any = 0;
     qr_limit: any = 0;
+    lat:any;
+    long:any;
     scanCoupon() {
         
         if (this.karigar_detail.status == 'Suspect') {
@@ -242,7 +248,61 @@ export class HomePage {
                     this.value = data;
                     console.log("redio val =====>", this.value)
                     if (this.value == 'scan') {
-                        this.scan();
+
+                        this.locationaccuracy.request(this.locationaccuracy.REQUEST_PRIORITY_HIGH_ACCURACY)
+                        .then(() => {
+                            let options = {
+                                maximumAge: 10000, timeout: 15000, enableHighAccuracy: true
+                            };
+                            this.geolocation.getCurrentPosition(options)
+                            .then((resp) => {
+                                this.lat = resp.coords.latitude
+                                this.long = resp.coords.longitude
+                                console.log(this.lat);
+                                //  this.getgeocode();
+                                
+                                if(this.lat == null && this.long == null){
+                                    console.log("null lat",this.lat);
+                                    
+                                }else{
+                                    this.scan();
+                                    //  let options: NativeGeocoderOptions = {
+                                    //     useLocale: true,
+                                    //     maxResults: 10
+                                    //     };
+                                    
+                                    // this.nativeGeocoder.reverseGeocode(this.lat, this.long,options)
+                                    // .then((result: NativeGeocoderReverseResult[]) => 
+                                    // console.log(JSON.stringify(result[0]),
+                                    // this.address = this.generateAddress(result[0]),
+                                    // console.log('subLocality',result[0]),
+                                    // console.log('subAdministrativeArea',result[0].subAdministrativeArea)
+                                    
+                                    // ))
+                                    
+                                    // .catch((error: any) => console.log(error));
+                                    // console.log( "address print",this.address)
+                                    
+                                }
+                                
+                                
+                            },
+                            error => {
+                                console.log('Error requesting location permissions', error);
+                                if(error){
+                                    let alert = this.alertCtrl.create({
+                                        title:'Alert!',
+                                        cssClass:'action-close',
+                                        subTitle:"Enable to get your location so, can't scan",
+                                        buttons: ['OK']
+                                    });
+                                    alert.present();  
+                                }
+                                
+                            });
+                        });
+                    
+
                     } else if (this.value == 'code') {
                         this.navCtrl.push(CoupanCodePage)
                     }
@@ -633,6 +693,12 @@ export class HomePage {
 
     goOnFurniturePage() {
         this.navCtrl.push(FurnitureIdeasPage);
+    }
+
+
+    
+    goOnSuper30Page() {
+        this.navCtrl.push(Super30Page, { 'user_type': this.karigar_detail.user_type });
     }
     goOnProductsPage() {
         this.navCtrl.push(ProductsPage);
@@ -1168,7 +1234,7 @@ export class HomePage {
 
         pushObject.on('error').subscribe(error => console.error('Error with Push plugin', error));
     }
-
+    
     openModal() {
         let contactModal = this.modalCtrl.create(AboutusModalPage);
         contactModal.present();

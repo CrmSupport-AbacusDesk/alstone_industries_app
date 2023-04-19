@@ -120,22 +120,22 @@ export class RegistrationPage {
 
         this.filter.limit = 0;
         this.filter.state = state;
-       
-
-            this.service.post_rqst({ 'filter': this.filter }, 'app_karigar/Architect_sales_user').subscribe(r => {
-                this.sales_user_list = r.sales_user;
-                console.log(this.sales_user_list);
-
-                if(r.sales_user = []){
-                    console.log(this.data.sales_user_id);
-                    this.data.sales_user_id ='';
-                    
-                }
 
 
+        this.service.post_rqst({ 'filter': this.filter }, 'app_karigar/Architect_sales_user').subscribe(r => {
+            this.sales_user_list = r.sales_user;
+            console.log(this.sales_user_list);
 
-            });
-            // this.loading.dismiss();
+            if (r.sales_user = []) {
+                console.log(this.data.sales_user_id);
+                this.data.sales_user_id = '';
+
+            }
+
+
+
+        });
+        // this.loading.dismiss();
 
 
 
@@ -174,34 +174,43 @@ export class RegistrationPage {
     getaddress(pincode) {
         console.log(pincode)
         // if (pincode.length == 6) {
-            console.log(pincode.length);
-            this.service.post_rqst({ 'pincode': pincode }, 'app_karigar/getAddress')
-                .subscribe((result) => {
-                    console.log(result);
-                    var address = result.address;
+        console.log(pincode.length);
+        this.service.post_rqst({ 'pincode': pincode }, 'app_karigar/getAddress')
+            .subscribe((result) => {
+                console.log(result);
+                var address = result.address;
 
-                    if (address != null) {
-                        this.data.state = result.address.state_name;
-                        this.getDistrictList(this.data.state);
-                        this.getSalesUserlist(this.data.state);
-                        this.data.district = result.address.district_name;
-                        this.data.city = result.address.city;
-                        console.log(this.data);
-                    }
-                    else if (address == null) {
-                       
-                        this.RequiredAlert("Please Enter Valid Pincode");
-                        this.data.state = '';
-                        this.data.district = '';
-                        this.data.city = '';
-                        this.data.sales_user_id ='';
-                        return;
-                    }
-                });
+                if (address != null) {
+                    this.data.state = result.address.state_name;
+                    this.getDistrictList(this.data.state);
+                    this.getSalesUserlist(this.data.state);
+                    this.data.district = result.address.district_name;
+                    this.data.city = result.address.city;
+                    console.log(this.data);
+                }
+                else if (address == null) {
+
+                    this.RequiredAlert("Please Enter Valid Pincode");
+                    this.data.state = '';
+                    this.data.district = '';
+                    this.data.city = '';
+                    this.data.sales_user_id = '';
+                    return;
+                }
+            });
         // }
 
     }
 
+
+    presentToastImage(msg) {
+        console.log(msg);
+        const toast = this.toastCtrl.create({
+            message: msg,
+            duration: 3000
+        });
+        toast.present();
+    }
     scrollUp() {
         this.content.scrollToTop();
     }
@@ -213,7 +222,7 @@ export class RegistrationPage {
         });
         toast.present();
     }
-    saveFlag: any = false;
+    saveFlag:boolean = false;
 
     submit() {
         console.log('data');
@@ -222,16 +231,27 @@ export class RegistrationPage {
         //     this.data.whatsapp_mobile_no = "";
         // }
 
+        if (!this.data.profile) {
+            this.presentToastImage('Profile image required');
+            return
+        }
+
+        if (!this.data.document_image) {
+            this.presentToast();
+            return
+        }
 
 
-        // if(!this.data.document_image){
-        //     this.presentToast();
-        //     return
-        // }
-if(this.data.user_type == 4){
-    this.data.sales_user_id = this.data.sales_user_id.id;
+        if (this.data.document_type == 'Aadharcard') {
+            if (!this.data.document_image || !this.data.document_image_back) {
+                this.presentToastImage('Document image required');
+                return
+            }
+        }
+        if (this.data.user_type == 4) {
+            this.data.sales_user_id = this.data.sales_user_id.id;
 
-}
+        }
 
         this.data.lang = this.lang;
 
@@ -280,9 +300,9 @@ if(this.data.user_type == 4){
                             }
 
                             // this.navCtrl.push(TabsPage);
-                        
-                                this.navCtrl.push(HomePage);
-                            
+
+                            this.navCtrl.push(HomePage);
+
                         });
                 }
                 else if (r['status'] == "EXIST") {

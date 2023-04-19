@@ -13,7 +13,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-
+import { Geolocation } from '@ionic-native/geolocation';
 import { AboutPage } from '../pages/about/about';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -60,7 +60,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { SafePipe } from '../pipes/safe/safe';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { ViewProfilePageModule } from '../pages/view-profile/view-profile.module';
-import { Push} from '@ionic-native/push';
+import { Push,PushObject, PushOptions} from '@ionic-native/push';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx'
 import { DescriptionModelPageModule } from '../pages/description-model/description-model.module';
 import { ReceiveRemarkModalPageModule } from '../pages/receive-remark-modal/receive-remark-modal.module';
@@ -93,6 +93,7 @@ import { ContractorAddPageModule } from '../pages/contractor/contractor-add/cont
 import { ContractorDetailPageModule } from '../pages/contractor/contractor-detail/contractor-detail.module';
 import { RegistrationPageModule } from '../pages/login-section/registration/registration.module';
 import { IonicSelectableModule } from 'ionic-selectable';
+import { Super30PageModule } from '../pages/super30/super30.module';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -160,6 +161,7 @@ export function createTranslateLoader(http: HttpClient) {
         ReceiveRemarkModalPageModule,
         WorkingSitePageModule,
         SiteAddPageModule,
+        Super30PageModule,
         SiteDetailPageModule,
         SiteListPageModule,
         ArchitectDetailPageModule,
@@ -213,6 +215,7 @@ export function createTranslateLoader(http: HttpClient) {
         DeviceOrientation,
         AppVersion,
         SocialSharing,
+        Geolocation,
         FileTransferObject,
         File,
         {provide: ErrorHandler, useClass: IonicErrorHandler}
