@@ -1,0 +1,87 @@
+<!--
+  Generated template for the Super30Page page.
+  
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{'Leaderboard' | translate}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+
+  <div *ngIf="!leaderBoard.length" class="image-detail">
+    <img src="assets/imgs/no_found.svg">
+  </div>
+
+  
+  <div class="super-category" *ngIf="leaderBoard.length">
+    <div class="top-three">
+      <div class="three-column"  *ngIf="leaderBoard.length > 1">
+        <div class="user-dp">
+          <img src="assets/imgs/man.svg" *ngIf="second_user.profile == ''">
+          <img src="{{uploadUrl+second_user.profile}}" *ngIf="second_user.profile != ''">
+          
+        </div>
+        <h6>{{second_user.first_name | titlecase}}</h6>
+        <p>{{second_user.state | titlecase}}</p>
+        <span>{{second_user.balance_point}} PTS</span>
+        <div class="position h80">2</div>
+      </div>
+      
+      <div class="three-column" *ngIf="leaderBoard.length > 0">
+        <div class="user-dp">
+          <img src="assets/imgs/man.svg" *ngIf="first_user.profile == ''">
+          <img src="{{uploadUrl+first_user.profile}}" *ngIf="first_user.profile != ''">
+        </div>
+        <h6>{{first_user.first_name | titlecase}}</h6>
+        <p>{{first_user.state | titlecase}}</p>
+        <span>{{first_user.balance_point}} PTS</span>
+        <div class="position h100">1</div>
+      </div>
+      <div class="three-column" *ngIf="leaderBoard.length > 2">
+        <div class="user-dp">
+          <img src="assets/imgs/man.svg" *ngIf="third_user.profile == ''">
+          <img src="{{uploadUrl+third_user.profile}}" *ngIf="third_user.profile != ''">
+        </div>
+        <h6>{{third_user.first_name | titlecase}}</h6>
+        <p>{{third_user.state | titlecase}}</p>
+        <span>{{third_user.balance_point}} PTS</span>
+        <div class="position">3</div>
+      </div>
+      
+    </div>
+  </div>
+  <div class="super-table">
+    <table>
+      
+      <tr *ngFor="let row of leaderBoard;let i = index" [ngClass]="{'active': row.id == user_id}">
+        <td class="w40 text-center">#{{i+1}}</td>
+        <td class="w50">
+          <div class="sm-dp">
+            <img src="assets/imgs/man.svg" *ngIf="row.profile == ''">
+            <img src="{{uploadUrl + row.profile}}" *ngIf="row.profile != ''">
+          </div>
+        </td>
+        <td>
+          <p>{{row.first_name | titlecase}}</p>
+          {{row.state | titlecase}}
+        </td>
+        <td class="w100">
+          <span><strong>{{row.balance_point}}</strong> PTS</span>
+        </td>
+        
+      </tr>
+    </table>
+  </div>
+  
+  
+  
+</ion-content>

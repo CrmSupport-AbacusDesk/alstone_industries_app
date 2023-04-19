@@ -35,7 +35,7 @@ export class ContractorAddPage {
     upl_file:any="";
     save_succ:any="";
 userType:any ="";
-  
+architect_id:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,private camera: Camera, public actionSheetController: ActionSheetController,public alertCtrl: AlertController, public toastCtrl: ToastController, public dbService:DbserviceProvider, public loadingCtrl:LoadingController, public translate:TranslateService) {
     // this.dbService.karigar_id;
    
@@ -47,6 +47,7 @@ console.log(navParams.data.data);
       this.purchaseform = JSON.parse(JSON.stringify(navParams.data.data));
       console.log(this.purchaseform);
       this.purchaseform.purchase_order_id  = this.purchaseform.id;
+      this.architect_id  = this.purchaseform.architect_id;
       this.purchaseform.site_location_id={};
       this.purchaseform.site_location_id['address']=navParams.data.data.address;
       this.purchaseform.site_location_id['id']=navParams.data.data.site_location_id;
@@ -76,7 +77,7 @@ console.log(navParams.data.data);
     
     this.siteList();
     this.getProducts();
-    // this.getArchitectlist('');
+    this.getArchitectlist(this.architect_id);
    
     this.translate.get("Camera")
     .subscribe(resp=>{
