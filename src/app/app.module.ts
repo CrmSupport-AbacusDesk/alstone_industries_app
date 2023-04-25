@@ -94,6 +94,7 @@ import { ContractorDetailPageModule } from '../pages/contractor/contractor-detai
 import { RegistrationPageModule } from '../pages/login-section/registration/registration.module';
 import { IonicSelectableModule } from 'ionic-selectable';
 import { Super30PageModule } from '../pages/super30/super30.module';
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
 
 export function createTranslateLoader(http: HttpClient) {
     return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -216,6 +217,7 @@ export function createTranslateLoader(http: HttpClient) {
         AppVersion,
         SocialSharing,
         Geolocation,
+        LocationAccuracy,
         FileTransferObject,
         File,
         {provide: ErrorHandler, useClass: IonicErrorHandler}

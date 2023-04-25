@@ -4,6 +4,8 @@ import { DbserviceProvider } from '../../../providers/dbservice/dbservice';
 import { TabsPage } from '../../tabs/tabs';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { HomePage } from '../../home/home';
+import { Geolocation } from '@ionic-native/geolocation';
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
 
 
 
@@ -18,19 +20,52 @@ export class CoupanCodePage {
   data:any={};
   flag:any='';
   
-  constructor(public navCtrl: NavController, public navParams: NavParams,public service:DbserviceProvider,public alertCtrl:AlertController,private barcodeScanner: BarcodeScanner) {
+  constructor(public navCtrl: NavController,public locationaccuracy: LocationAccuracy,private geolocation: Geolocation, public navParams: NavParams,public service:DbserviceProvider,public alertCtrl:AlertController,private barcodeScanner: BarcodeScanner) {
   }
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad CoupanCodePage');
   }
-  
+  lat:any;
+    long:any;
   submit(data)
   {
+
+    this.locationaccuracy.request(this.locationaccuracy.REQUEST_PRIORITY_HIGH_ACCURACY)
+    .then(() => {
+        let options = {
+            maximumAge: 10000, timeout: 15000, enableHighAccuracy: true
+        };
+        this.geolocation.getCurrentPosition(options)
+        .then((resp) => {
+            this.lat = resp.coords.latitude
+            this.long = resp.coords.longitude
+            console.log(this.lat);
+            //  this.getgeocode();
+            
+            if(this.lat == null && this.long == null){
+                console.log("null lat",this.lat);
+                
+            }  
+        },
+        error => {
+            console.log('Error requesting location permissions', error);
+            if(error){
+                let alert = this.alertCtrl.create({
+                    title:'Alert!',
+                    cssClass:'action-close',
+                    subTitle:"Enable to get your location so, can't scan",
+                    buttons: ['OK']
+                });
+                alert.present();  
+            }
+            
+        });
+    });
     this.flag=1;
     console.log(data);
     this.qr_code=data;
-    this.service.post_rqst({'karigar_id':this.service.karigar_id,'qr_code':this.qr_code},'app_karigar/karigarCoupon').subscribe((r:any)=>
+    this.service.post_rqst({'karigar_id':this.service.karigar_id,'qr_code':this.qr_code,'coupon_scan_lat':this.lat,'coupon_scan_long':this.long },'app_karigar/karigarCoupon').subscribe((r:any)=>
     {
       console.log(r);
       

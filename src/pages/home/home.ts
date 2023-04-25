@@ -347,7 +347,7 @@ export class HomePage {
                             this.qr_code = resp.text;
                             console.log(this.qr_code);
                             if (resp.text != '') {
-                                this.service.post_rqst({ 'karigar_id': this.service.karigar_id, 'qr_code': this.qr_code }, 'app_karigar/karigarCoupon')
+                                this.service.post_rqst({ 'karigar_id': this.service.karigar_id, 'qr_code': this.qr_code,'coupon_scan_lat':this.lat,'coupon_scan_long':this.long }, 'app_karigar/karigarCoupon')
                                     .subscribe((r: any) => {
                                         console.log(r);
 
