@@ -6,20 +6,31 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>{{ 'Purchase Detail' | translate }}</ion-title>
+    <ion-title>{{ 'Earn Point Detail' | translate }}</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <!-- <div class="cs-list">
+  <div class="cs-list">
     <div class="top-block">
-      <p> {{'Company Name' | translate}} : {{conDetail.distributor_company_name | titlecase}}</p>
-      <p>{{conDetail.distributor_mobile}}</p>
+      <p><a class="link">#Pur{{conDetail.id}}</a></p>
+      <p>{{'Bill Amount' | translate}} : <strong >{{conDetail.bill_amount}}</strong> </p>
+
+
+      <!-- <p> {{'Company Name' | translate}} : {{conDetail.distributor_company_name | titlecase}}</p>
+      <p>{{conDetail.distributor_mobile}}</p> -->
 
     </div>
+
+
     <div class="middle-block">
+
       <div class="three-block">
-        <p>{{'Date' | translate}} : <strong>{{conDetail.date_created |  date:'d MMMM y'}}</strong></p>
+        <p>{{'Date Created' | translate}} : <strong>{{conDetail.date_created |  date:'d MMMM y'}}</strong></p>
+        <p>{{'Bill Date' | translate}} : <strong>{{conDetail.bill_date |  date:'d MMMM y'}}</strong></p>
+      </div>
+      <div class="three-block">
+        <p>{{'Bill No.' | translate}} : <strong >{{conDetail.bill_no}}</strong> </p>
         <p>{{'Status' | translate}} : <strong class="{{conDetail.status}}">{{conDetail.status}}</strong> </p>
       </div>
     </div>
@@ -29,25 +40,73 @@
   </div>
   
   <ng-container *ngIf="productData.length">
-    <h2>{{'Items Detail' | translate}}</h2>
+
+    <div class="pl16 pr16 mb16">
+      <div class="border-container mt16">
+        <div class="summary-heading">Item Detail</div>
+        
+        <div class="payment-box">
+          <div class="credit-table">
+            <table>
+              <tr>
+                <td class="text-left">Product Detail</td>
+                <td class="text-left">Qty </td>
+              </tr>
+              <tr *ngFor="let row of conDetail.parts">
+                <th>{{row.product_point_group | titlecase}}</th>
+                <th>{{row.qty }}</th>
+                
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <ng-container >
+
+        <div class="border-container mt16">
+          <div class="summary-heading">Bill Image</div>
+          <ng-container>
+            <div class="upload-doc mt10">
+              <ul class="no-padding">
+                
+                <li class="image-upload" *ngFor="let row of conDetail.image" >
+                  <img src="{{upload_url + row.image}}">
+                  
+                </li>
+              </ul>
+              
+            </div>
+            
+            
+          </ng-container>
+        </div>
+        
+        <!-- <h2>{{'Bill Image' | translate}}</h2>
+        <div class="pr16 pl16" *ngFor="let row of productDataImg; let i = index">
+          <div class="bill_img">
+            <img src="{{upload_url + row.image}}">
+          </div>
+        </div> -->
+      </ng-container>
+    </div>
+
+   
+    <!-- <h2>{{'Items Detail' | translate}}</h2>
     
     <ion-item  *ngFor="let row of productData; let i = index">
       <p><strong>{{'Product Detail' | translate}}:</strong> {{row.product_point_group | titlecase}}</p>
       <p><strong>{{'Size' | translate}}:</strong>  {{row.length}} * {{row.width}}</p>
       <p><strong>{{'Quantity' | translate}}:</strong>  {{row.qty}}</p>
       <p *ngIf="conDetail.status =='Reject'"><strong>{{'Reason' | translate}}:</strong>  {{conDetail.status_reason ? conDetail.status_reason :'N/A'}}</p>
-    </ion-item>
+    </ion-item> -->
   </ng-container>
+
+
+ 
   
   
-  <ng-container >
-    <h2>{{'Bill Image' | translate}}</h2>
-    <div class="pr16 pl16" *ngFor="let row of productDataImg; let i = index">
-      <div class="bill_img">
-        <img src="{{upload_url + row.image}}">
-      </div>
-    </div>
-  </ng-container> -->
+  
   
 
 
@@ -56,7 +115,7 @@
 
 
 
-  <div class="mt16 pl16 mb16 pr16">
+  <!-- <div class="mt16 pl16 mb16 pr16">
     <div class="cs-list">
       <div class="top-block">
         <p><a class="link">#Pur{{getData.id}}</a> &nbsp; {{'Date Created' | translate}}  {{getData.date_created |  date:'d MMMM y'}}</p>
@@ -172,12 +231,12 @@
 
    
     
-  </div>
+  </div> -->
 
 
       
-  <ion-fab right bottom *ngIf="userType == 5 && getData.status == 'Pending'">
+  <!-- <ion-fab right bottom *ngIf="userType == 5 && getData.status == 'Pending'">
     <button ion-fab  (click)="editDetail()"> <ion-icon name="create"></ion-icon></button>
-  </ion-fab>
+  </ion-fab> -->
     
 </ion-content>

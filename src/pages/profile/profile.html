@@ -1,11 +1,11 @@
 <ion-header>
     <ion-navbar>
         <ion-title>{{'Profile' | translate}}</ion-title>
-        <!-- <div class="header-icons">
+        <div class="header-icons">
             <button ion-button class="cs-hdr-icons mr16" (click)="logout()">
                 <i class="material-icons">power_settings_new</i>
             </button>
-        </div> -->
+        </div>
     </ion-navbar>
 </ion-header>
 <ion-content padding>
@@ -25,7 +25,7 @@
                     <h6 *ngIf="karigar_detail.user_type == 1">({{'Carpenter' | translate}})</h6>
                     <h6 *ngIf="karigar_detail.user_type == 2">({{'Mason' | translate}})</h6>
                     <h6 *ngIf="karigar_detail.user_type == 3">({{'Fabricator' | translate}})</h6>
-                    <h6 *ngIf="karigar_detail.user_type == 4">({{'Architect' | translate}})</h6>
+                    <h6 *ngIf="karigar_detail.user_type == 6">({{'Dealer' | translate}})</h6>
 
                     <p class="{{karigar_detail.status}}">
                         {{karigar_detail.status}}
@@ -42,6 +42,15 @@
                 
                 <div class="padding16">
                     <div class="profile-card">
+                        <div class="text-box" *ngIf="karigar_detail.user_type == 6">
+                            <p>{{ 'Company Name' | translate }}</p>
+                            <h6>{{karigar_detail.company_name}}</h6>
+                        </div>
+
+                        <div class="text-box" *ngIf="karigar_detail.user_type == 6">
+                            <p>{{ 'GST No.' | translate }}</p>
+                            <h6>{{karigar_detail.gst_number}}</h6>
+                        </div>
                         <div class="text-box">
                             <p>{{ 'Mobile No.' | translate }}</p>
                             <h6>{{karigar_detail.mobile_no}}</h6>
@@ -72,7 +81,7 @@
                         </div>
                     </div>
                    
-                     <div class="profile-card" *ngIf="karigar_detail.user_type == '4'">
+                     <!-- <div class="profile-card" *ngIf="karigar_detail.user_type == '4'">
                         <div class="text-center">
                             <h2>{{ 'Sales Executive Information' | translate }}</h2>
                         </div>
@@ -87,7 +96,7 @@
                         </div>
                    
                     </div>
-                    
+                     -->
                     <div class="profile-card"  *ngIf="karigar_detail.document_image && karigar_detail.document_type && karigar_detail.document_no">
                         <div class="text-center">
                             <h2>{{ 'Document Information' | translate }}</h2>

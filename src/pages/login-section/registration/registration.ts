@@ -10,6 +10,7 @@ import { Content } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { HomePage } from '../../home/home';
 import { ConstantProvider } from '../../../providers/constant/constant';
+import { TabsPage } from '../../tabs/tabs';
 
 
 @IonicPage()
@@ -299,9 +300,9 @@ export class RegistrationPage {
                                 }
                             }
 
-                            // this.navCtrl.push(TabsPage);
+                            this.navCtrl.push(TabsPage);
 
-                            this.navCtrl.push(HomePage);
+                            // this.navCtrl.push(HomePage);
 
                         });
                 }

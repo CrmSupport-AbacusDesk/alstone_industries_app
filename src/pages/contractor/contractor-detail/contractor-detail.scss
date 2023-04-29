@@ -43,4 +43,142 @@ page-contractor-detail {
             margin: 0 auto;
         }
     }
+
+
+    .border-container {
+        border: 0.5px solid #d8d8d8;
+        border-radius: 8px;
+        overflow: hidden;
+    
+        .summary-heading {
+            margin: 0px;
+            padding: 10px;
+            font-size: 16px;
+            background: #e0e0e0;
+        }
+    }
+    
+   
+
+
+    .payment-table {
+        table {
+            width: 100%;
+            table-layout: fixed;
+            box-sizing: border-box;
+            border-collapse: collapse;
+    
+            tr {
+    
+                td,
+                th {
+                    font-size: 14px;
+                    padding: 10px 8px;
+                    border-bottom: 1px solid #d8d8d8;
+                }
+    
+                th {
+                    font-size: 16px;
+                    text-align: right;
+                    font-weight: bold;
+                }
+    
+                &:nth-child(even) {
+    
+                    th,
+                    td {
+                        background: #efefef;
+                    }
+                }
+    
+                &:last-child {
+    
+                    td,
+                    th {
+                        border-bottom: 0px;
+                    }
+                }
+            }
+        }
+    }
+    
+    .credit-table {
+        table {
+            width: 100%;
+            table-layout: fixed;
+            box-sizing: border-box;
+            border-collapse: collapse;
+    
+            tr {
+    
+                td,
+                th {
+                    font-size: 13px;
+                    padding: 10px 8px;
+                    border-top: 1px solid #acacac;
+    
+                    .badge-padding {
+                        padding: 5px;
+                        width: 100%;
+                        display: block;
+                        border-radius: 6px;
+                        box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.1);
+                        font-weight: 500;
+    
+                        &.outstanding,
+                        &.Approved,
+                        &.Dispatch {
+                            background: #e1ffbf;
+                        }
+    
+                        &.overDue,
+                        &.Reject {
+                            background: #ffbaba;
+                        }
+    
+                        &.Pending {
+                            background: #FFECB3;
+                        }
+    
+                        &.Partially_Dispatch {
+                            background: #BBDEFB;
+                        }
+                    }
+                }
+    
+                th {
+                    font-size: 13px;
+                    text-align: left;
+                    font-weight: bold;
+                    border-right: 1px solid #acacac;
+    
+                }
+    
+                td {
+                    border-right: 1px solid #acacac;
+    
+                }
+    
+                td:last-child() {
+                    border-right: 0px;
+    
+                }
+    
+                th:last-child() {
+                    border-right: 0px;
+    
+                }
+    
+                &:last-child {
+    
+                    td,
+                    th {
+                        border-bottom: 0px;
+    
+                    }
+                }
+            }
+        }
+    }
+    
 }
