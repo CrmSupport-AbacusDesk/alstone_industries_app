@@ -47,16 +47,21 @@ export class ContractorListPage {
 
   ionViewDidLoad() {
     this.presentLoading();
-    this.PurchaseList(this.details);
+    // this.dealerPurchaseList(this.details);
+    // this.PurchaseList(this.details);
   }
 
-  // ionViewWillEnter(){
-  //   this.PurchaseList(this.details)
-  // }
+  ionViewWillEnter(){
+    this.dealerPurchaseList(this.details);
+
+    // this.PurchaseList(this.details)
+  }
   
   doRefresh (refresher)
   {
-      this.PurchaseList(this.details);
+      // this.PurchaseList(this.details);
+    this.dealerPurchaseList(this.details);
+
       setTimeout(() => {
           refresher.complete();
       }, 1000);
@@ -82,12 +87,11 @@ export class ContractorListPage {
   goOnPurchaseDetail(id){
     this.navCtrl.push(ContractorDetailPage, {'id':id,'user_type':this.userType});
   }
-  
-  
-  contractorList(status){
+
+  dealerPurchaseList(status){
     this.filter.mode = 0;
     this.filter.status =  status;
-    this.dbService.post_rqst( {'contractor_id':this.dbService.karigar_id, 'filter': this.filter}, 'app_karigar/get_contractor_request').subscribe( r =>
+    this.dbService.post_rqst( {'dealer_id':this.dbService.karigar_id, 'filter': this.filter}, 'app_karigar/get_contractor_request').subscribe( r =>
       {
         this.loading.dismiss();
         console.log(r.request_list.data);
@@ -101,6 +105,25 @@ export class ContractorListPage {
       });
       
     }
+  
+  
+  // contractorList(status){
+  //   this.filter.mode = 0;
+  //   this.filter.status =  status;
+  //   this.dbService.post_rqst( {'contractor_id':this.dbService.karigar_id, 'filter': this.filter}, 'app_karigar/get_contractor_request').subscribe( r =>
+  //     {
+  //       this.loading.dismiss();
+  //       console.log(r.request_list.data);
+  //       this.data = r.request_list.data;
+  //       this.filter.mode = 1;
+  //       this.all_count = r.all_count;
+  //       this.pending_count = r.pending_count;
+  //       this.verified_count = r.approved_count;
+  //       this.reject_count = r.reject_count;
+        
+  //     });
+      
+  //   }
 
 
 
@@ -109,11 +132,12 @@ export class ContractorListPage {
     // purchase List
 
   flag:any='';
-    
-    loadData(infiniteScroll)
+
+
+   loadData(infiniteScroll)
     {
       this.filter.limit=this.data.length;
-      this.dbService.post_rqst({'filter' : this.filter},'app_master/purchaseList')
+      this.dbService.post_rqst({'dealer_id':this.dbService.karigar_id, 'filter': this.filter},'app_karigar/get_contractor_request')
       .subscribe( (r) =>
       {
         console.log(r);
@@ -124,41 +148,73 @@ export class ContractorListPage {
         else
         {
           setTimeout(()=>{
-            this.data=this.data.concat(r['purchase_orders']);
+            // this.data=this.data.concat(r['purchase_orders']);
+
+            this.data = r.request_list.data;
+            this.filter.mode = 1;
+            this.all_count = r.all_count;
+            this.pending_count = r.pending_count;
+            this.verified_count = r.approved_count;
+            this.reject_count = r.reject_count;
             infiniteScroll.complete();
           },1000);
         }
       });
     }
+    
+    // loadData(infiniteScroll)
+    // {
+    //   this.filter.limit=this.data.length;
+    //   this.dbService.post_rqst({'filter' : this.filter},'app_master/purchaseList')
+    //   .subscribe( (r) =>
+    //   {
+    //     console.log(r);
+    //     if(r['purchase_orders']=='')
+    //     {
+    //       this.flag=1;
+    //     }
+    //     else
+    //     {
+    //       setTimeout(()=>{
+    //         this.data=this.data.concat(r['purchase_orders']);
+    //         infiniteScroll.complete();
+    //       },1000);
+    //     }
+    //   });
+    // }
   
   
-    PurchaseList(status){
-      this.filter.mode = 0;
-      this.filter.limit = 0;
-      this.filter.status =  status;
-      if(this.userType == 5){
-        this.filter.sales_user_id = this.dbService.karigar_id;
-      }
-      if(this.userType == 4){
-        this.filter.architect_id = this.dbService.karigar_id;
+    // PurchaseList(status){
+    //   this.filter.mode = 0;
+    //   this.filter.limit = 0;
+    //   this.filter.status =  status;
+    //   if(this.userType == 5){
+    //     this.filter.sales_user_id = this.dbService.karigar_id;
+    //   }
+    //   if(this.userType == 4){
+    //     this.filter.architect_id = this.dbService.karigar_id;
 
-      }
+    //   }
       
 
-      this.dbService.post_rqst( {'filter': this.filter}, 'app_master/purchaseList').subscribe( r =>
-        {
-          this.loading.dismiss();
+    //   this.dbService.post_rqst( {'filter': this.filter}, 'app_master/purchaseList').subscribe( r =>
+    //     {
+    //       this.loading.dismiss();
          
-          this.data = r.purchase_orders;
-          this.filter.mode = 1;
-          this.all_count = r.purchase_count;
-          this.pending_count = r.pending_count;
-          this.verified_count = r.verified_count;
-          this.reject_count = r.rejected_count;
+    //       this.data = r.purchase_orders;
+    //       this.filter.mode = 1;
+    //       this.all_count = r.purchase_count;
+    //       this.pending_count = r.pending_count;
+    //       this.verified_count = r.verified_count;
+    //       this.reject_count = r.rejected_count;
           
-        });
+    //     });
         
-      }
+    //   }
+
+
+
+    
   
 
     

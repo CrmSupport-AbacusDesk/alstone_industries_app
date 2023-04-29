@@ -10,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { MobileLoginPage } from '../mobile-login/mobile-login';
 import { HomePage } from '../../home/home';
 import { LanguagePage } from '../../language/language';
+import { TabsPage } from '../../tabs/tabs';
 
 
 
@@ -98,15 +99,17 @@ export class OtpPage {
                 }
                 this.storage.set('token', r['token']);
                 this.service.karigar_id = r['user'].id;
+
                 console.log(this.service.karigar_id);
 
                 this.service.post_rqst({ "data": { 'id': this.service.karigar_id, 'language': this.lang } }, "app_karigar/update_language")
                     .subscribe(resp => {
                         console.log(resp);
                         // this.navCtrl.push(HomePage);
-                        this.navCtrl.setRoot(HomePage);
+                        // this.navCtrl.setRoot(HomePage);
+                         this.navCtrl.push(TabsPage);
+
                     })
-                // this.navCtrl.push(TabsPage);
             });
     }
     resendOtp() {

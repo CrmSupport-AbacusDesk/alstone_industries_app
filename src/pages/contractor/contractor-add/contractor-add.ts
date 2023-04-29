@@ -21,7 +21,7 @@ export class ContractorAddPage {
   
   conData:any={};
   conData1:any={};
-  today_date:any ={};
+  today_date=new Date().toISOString().slice(0,10);
   todayDate:any
   contractorData:any =[];
   loading:Loading;
@@ -185,16 +185,35 @@ console.log(navParams.data.data);
   
   addItem()
   {
-    let val=JSON.parse(JSON.stringify(this.conData1));
-    console.log(val);
-    if(this.conData1.product_point_group!='' && this.conData1.qty!='' ){
-      this.contractorData.push(val);
+    // let val=JSON.parse(JSON.stringify(this.conData1));
+    // console.log(val);
+    // if(this.conData1.product_point_group!='' && this.conData1.qty!='' ){
+    //   this.contractorData.push(val);
+    // }
+
+    if(this.contractorData.length <=0){
+      this.contractorData.push(JSON.parse(JSON.stringify(this.conData1)))
+      this.conData1.product_point_group='';
+      this.conData1.qty='';
     }
-    console.log(this.contractorData);
+      
+    else{
+      let isExistIndex:any;
+      isExistIndex=this.contractorData.findIndex(row=>row.product_point_group==this.conData1.product_point_group);
+      if(isExistIndex == -1){
+        this.contractorData.push(JSON.parse(JSON.stringify(this.conData1)))
+        this.conData1.product_point_group='';
+        this.conData1.qty='';
+
+      }
+      else{
+          this.contractorData[isExistIndex].qty= parseInt(this.contractorData[isExistIndex].qty)+parseInt(this.conData1.qty)
+          this.conData1.product_point_group='';
+          this.conData1.qty='';
   
-    this.conData1.product_point_group='';
+      }
+    }
   
-    this.conData1.qty='';
     
   }
   
@@ -427,22 +446,22 @@ submit2(){
     //   this.alertToast('Bill image required')
     //   return
     // }
-
-    
-  
-  
   this.presentLoading();
   this.saveFlag = true;
   this.conData1.part = this.contractorData;
-  this.conData1.contractor_id = this.dbService.karigar_id;
+  this.conData1.dealer_id = this.dbService.karigar_id;
   this.conData1.image = this.image_data?this.image_data:[];
   this.dbService.post_rqst( this.conData1,'app_karigar/add_contractor_request ').subscribe( r =>
     {
       console.log(r);
-
       if(r['status'] == 'SUCCESS'){
         this.loading.dismiss();
+        this.showSuccess("Purchase Add Successfully");
         this.navCtrl.popTo(ContractorListPage);
+      }
+      else{
+        this.loading.dismiss();
+      this.alertToast('SomeThing Went Wrong!')
       }
     });
   }
@@ -458,6 +477,18 @@ submit2(){
         this.distributor_list=r['karigars'];
   
       });
+    }
+
+
+    showSuccess(text)
+    {
+        let alert = this.alertCtrl.create({
+            title:'Success!',
+            cssClass:'action-close',
+            subTitle: text,
+            buttons: ['OK']
+        });
+        alert.present();
     }
   
   MobileNumber(event: any) {

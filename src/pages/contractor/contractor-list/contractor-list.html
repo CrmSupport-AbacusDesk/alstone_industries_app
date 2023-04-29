@@ -6,7 +6,7 @@
 -->
 <ion-header>
   <ion-navbar>
-    <ion-title>{{ 'Purchase List' | translate }} </ion-title>
+    <ion-title>{{ 'Earn Point List' | translate }} </ion-title>
   </ion-navbar>
   
   <ion-toolbar color="white" >
@@ -16,19 +16,20 @@
           {{ 'All' | translate }}  ({{all_count}})
         </ion-segment-button> -->
         <!-- click)="filter = {}; filter.status = 'Pending'; PurchaseList ()" [ngClass]="{'active': filter.status == 'Pending'}" -->
-        <ion-segment-button  value="Pending"  (click)="PurchaseList (details)">
+        <ion-segment-button  value="Pending"  (click)="dealerPurchaseList (details)">
           {{ 'Pending' | translate }}   ({{pending_count}})
         </ion-segment-button>
-        <ion-segment-button  value="Verified" (click)="PurchaseList (details)">
-          {{ 'Verified' | translate }}  ({{verified_count}})
+        <ion-segment-button  value="Approved" (click)="dealerPurchaseList (details)">
+          {{ 'Approved' | translate }}  ({{verified_count}})
         </ion-segment-button>
-        <ion-segment-button  value="Reject"  (click)="PurchaseList (details)">
+        <ion-segment-button  value="Reject"  (click)="dealerPurchaseList (details)">
           {{ 'Reject' | translate }} ({{reject_count}})
         </ion-segment-button>
       </ion-segment>
     </div>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content >
   <ion-refresher (ionRefresh)="doRefresh($event)">
@@ -39,6 +40,73 @@
   
   
   <!-- [ngSwitch]="list" -->
+  <div class="padding16" >
+
+    <div class="padding16">
+      <div class="cs-list" *ngFor="let row of data; let i = index;" (click)="goOnPurchaseDetail(row.id)">
+        <div class="top-block">
+          <p><a class="link">#Pur{{row.id}}</a> &nbsp; {{row.date_created |  date:'d MMMM y'}}</p>
+          <ion-icon name="arrow-forward"   ios="ios-arrow-forward"></ion-icon>
+        </div>
+        <div class="middle-block">
+          <div class="three-block pb0">
+            <p>{{'Bill Date' | translate}} : <strong>{{row.bill_date | titlecase}}</strong></p>
+          </div>
+       
+        
+          <div class="three-block">
+            <p>{{'Bill No.' | translate}} : <strong>{{row.bill_no}}</strong> </p>
+          </div>
+
+          <div class="three-block">
+            <p>{{'Bill Amount' | translate}} : <strong>{{row.bill_amount}}</strong> </p>
+          </div>
+          <div class="three-block">
+            <!-- <p>{{'Product' | translate}} : <strong>{{row.product_name | titlecase}}</strong></p> -->
+            <p>{{'QTY.' | translate}} : <strong>{{row.total_qty}}</strong> </p>
+          </div>
+          
+          <div class="three-block">
+            <p>{{'Status' | translate}} : <strong class="{{row.status}}">{{row.status}}</strong></p>
+          </div>
+        </div>        
+        
+        <div class="top-block footer-block" *ngIf="userType != 5 && row.architect_points > 0 ">
+          <p>{{'Earned Points' | translate}}: {{row.architect_points}}</p>
+        </div>
+        
+      </div>
+      
+      <div class="image-detail"  *ngIf="data.length == 0">
+        <img src="assets/imgs/no_found.svg">
+      </div>
+    </div>
+
+  </div>
+  <!-- <div class="image-detail"  *ngIf="!data.length && ( (filter.status == 'All' && all_count ==0 ) || (filter.status == 'Pending' && pending_count == 0 ) || (filter.status == 'Verified' && verified_count == 0 ) || (filter.status == 'Reject' && reject_count ==0 ))">
+    <img src="assets/imgs/no_found.svg">
+  </div> -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)"  *ngIf="flag!=1">
+    <ion-infinite-scroll-content
+    loadingSpinner="bubbles"
+    loadingText="{{'Loading more data...' | translate}}">
+  </ion-infinite-scroll-content>
+</ion-infinite-scroll>
+  <ion-fab right bottom >
+    <button ion-fab color="secondary" (click)="goOnPurchaseAdd()"> <ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>
+
+
+<!-- <ion-content >
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  
+  
+  
+  [ngSwitch]="list"
   <div class="padding16" >
 
     <div class="padding16">
@@ -82,16 +150,16 @@
     </div>
 
   </div>
-  <!-- <div class="image-detail"  *ngIf="!data.length && ( (filter.status == 'All' && all_count ==0 ) || (filter.status == 'Pending' && pending_count == 0 ) || (filter.status == 'Verified' && verified_count == 0 ) || (filter.status == 'Reject' && reject_count ==0 ))">
+  <div class="image-detail"  *ngIf="!data.length && ( (filter.status == 'All' && all_count ==0 ) || (filter.status == 'Pending' && pending_count == 0 ) || (filter.status == 'Verified' && verified_count == 0 ) || (filter.status == 'Reject' && reject_count ==0 ))">
     <img src="assets/imgs/no_found.svg">
-  </div> -->
+  </div>
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)"  *ngIf="flag!=1">
     <ion-infinite-scroll-content
     loadingSpinner="bubbles"
     loadingText="{{'Loading more data...' | translate}}">
   </ion-infinite-scroll-content>
 </ion-infinite-scroll>
-  <ion-fab right bottom *ngIf="userType == 5">
+  <ion-fab right bottom >
     <button ion-fab color="secondary" (click)="goOnPurchaseAdd()"> <ion-icon name="add"></ion-icon></button>
   </ion-fab>
-</ion-content>
+</ion-content> -->

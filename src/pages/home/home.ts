@@ -70,6 +70,8 @@ export class HomePage {
     idlogin: any;
     registration: any;
     notifications: any = '';
+    toggle:boolean = false;
+
 
 
 
@@ -410,6 +412,18 @@ export class HomePage {
         console.log(this.lang);
 
         this.navCtrl.push(ProfilePage, { 'lang': this.lang })
+    }
+
+    toggleValue(value){
+        console.log('====================================');
+        console.log(value);
+        console.log('====================================');
+        if(value == 'false'){
+          this.toggle = true;  
+        }
+        else{
+            this.toggle = false;  
+        }
     }
 
     goOnScanePage() {
@@ -1164,7 +1178,7 @@ export class HomePage {
         let image = "";
         let app_url = "https://play.google.com/store/apps/details?id=com.alstone.app";
 
-        this.socialSharing.share("Hey there join me (" + this.karigar_detail.full_name + "-" + this.karigar_detail.mobile_no + ") on  Alstone Industries., app. Enter my code *" + this.karigar_detail.referral_code + "* to earn points back in your wallet!", "Karigar Reffral", image, app_url)
+        this.socialSharing.share("Hey there join me (" + this.karigar_detail.full_name + "-" + this.karigar_detail.mobile_no + ") on  Alstone Reyno Club., app. Enter my code *" + this.karigar_detail.referral_code + "* to earn points back in your wallet!", "Karigar Reffral", image, app_url)
             .then(resp => {
                 console.log(resp);
 

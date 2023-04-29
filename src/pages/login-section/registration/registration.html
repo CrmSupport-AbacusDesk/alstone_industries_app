@@ -4,7 +4,7 @@
         <ion-title *ngIf="!data.id">{{'Registration' | translate}}</ion-title>
     </ion-navbar>
 </ion-header>
-
+ 
 <ion-content class="main-backgroung">
     <form #f="ngForm" (ngSubmit)="f.form.valid ? submit() : scrollUp()">
 
@@ -32,8 +32,8 @@
                     </ion-item>
 
                     <ion-item>
-                        <ion-label>{{'Architect'}}</ion-label>
-                        <ion-radio value="4"></ion-radio>
+                        <ion-label>{{'Dealer'}}</ion-label>
+                        <ion-radio value="6"></ion-radio>
                     </ion-item>
                 </ion-list>
                 <p *ngIf="f.submitted && user_type?.invalid" style="color:red">{{'Choose Type is Required' | translate}}
@@ -77,16 +77,40 @@
             <!--//////////////// importaint //////////////-->
 
 
+ 
 
-
-            <div class="cs-form">
+            <div class="cs-form"> 
                 <ion-list>
                     <ion-item class="cs-input" [ngClass]="{'error':f.submitted && company_name?.invalid}"
-                        *ngIf="data.user_type==4">
+                        *ngIf="data.user_type==6">
                         <ion-label floating>{{'Company Name' | translate}}.*</ion-label>
                         <ion-input type="text" name="company_name" #company_name="ngModel"
                             [(ngModel)]="data.company_name" required (keypress)="namecheck($event)"></ion-input>
                     </ion-item>
+
+                    <!-- <ng-container *ngIf="data.type==6">
+                        <ion-item class="cs-input" [ngClass]="{'error':f.submitted && gst_number?.invalid || gst_number.errors?.pattern}">
+                        <ion-label floating>{{'GST Numberrr' | translate}}</ion-label> <ion-input type="text" id="gst_number" name="gst_number" #gst_number="ngModel"
+                            [(ngModel)]="data.gst_number"
+                            pattern="^[0-9]{2}[A-z]{5}[0-9]{4}[A-z]{1}[1-9A-z]{1}Z[0-9A-z]{1}$"></ion-input>
+                    </ion-item>
+                    <p class="error-msg" style="color: red;" *ngIf="gst_number.errors?.pattern">{{'Invaild GST Number' | translate}}</p>
+                        
+                        
+                    </ng-container> -->
+
+                    <ng-container *ngIf="data.user_type==6" >
+                        <ion-item class="cs-input"
+                            [ngClass]="{'error':(f.submitted && gst_no?.invalid) || (f.submitted && !gst_no.valid)}">
+                            <ion-label floating>{{'GST No.' | translate}}</ion-label>
+                            <ion-input type="gst_no" name="gst_no" #gst_no="ngModel" [(ngModel)]="data.gst_no"
+                                pattern="^[0-9]{2}[A-z]{5}[0-9]{4}[A-z]{1}[1-9A-z]{1}Z[0-9A-z]{1}$" required></ion-input>
+                        </ion-item>
+                        <div *ngIf="gst_no.errors?.pattern" class="invalid-feedback">
+                            <div>{{'Invaild GST No.' | translate}}</div>
+                        </div>
+  
+                    </ng-container>
 
                     <ion-item class="cs-input" [ngClass]="{'error':f.submitted && mobile_no?.invalid}">
                         <ion-label floating>{{'Mobile No' | translate}}.*</ion-label>
@@ -146,7 +170,7 @@
             <div class="cs-form">
                 <ion-list>
                     <ion-item class="cs-input"
-                        [ngClass]="{'error':(f.address && address?.invalid) || (f.submitted && !address.valid)}">
+                        [ngClass]="{'error':(f.submitted && address?.invalid) || (f.submitted && !address.valid)}">
                         <ion-label floating>{{'Address' | translate}}*</ion-label>
 
                         <ion-input type="text" name="address" #address="ngModel" [(ngModel)]="data.address"
@@ -191,14 +215,14 @@
                     </ion-select>
                 </ion-item> -->
 
-                    <ion-item class="cs-input" [ngClass]="{'error':f.submitted && sales_user_id?.invalid}"
+                    <!-- <ion-item class="cs-input" [ngClass]="{'error':f.submitted && sales_user_id?.invalid}"
                         *ngIf="data.user_type == 4">
                         <ion-label floating>{{'Select Sales Executive' | translate}}*</ion-label>
                         <ionic-selectable item-content [(ngModel)]="data.sales_user_id" #sales_user_id="ngModel"
                             [items]="sales_user_list" name="sales_user_id" itemValueField="id" 
                             itemTextField="full_name" [hasVirtualScroll]="true" [canSearch]="true" required>
                         </ionic-selectable>
-                    </ion-item>
+                    </ion-item> -->
                 </ion-list>
             </div>
         </div>

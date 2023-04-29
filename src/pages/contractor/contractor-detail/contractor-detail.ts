@@ -35,7 +35,8 @@ export class ContractorDetailPage {
   ionViewDidLoad() {
     this.id = this.navParams.get('id');
     this.presentLoading();
-    this.PurchaseDetail();
+    // this.PurchaseDetail();
+    this.contractorDetail();
   }
   
   
@@ -57,7 +58,9 @@ export class ContractorDetailPage {
       {
         this.loading.dismiss();
         this.conDetail = r.request_detail[0];
+        console.log(this.conDetail);
         this.productData = this.conDetail.parts;
+        console.log(this.productData);
         this.productDataImg = this.conDetail.image;
         console.log(this.productDataImg);
         
@@ -68,16 +71,16 @@ export class ContractorDetailPage {
 
     getData:any = {};
 
-    PurchaseDetail(){
+    // PurchaseDetail(){
     
     
-      this.dbService.post_rqst( { 'purchase_id': this.id, 'karigar_id': this.dbService.karigar_id}, 'app_master/purchaseDetail').subscribe( r =>
-        {
-          this.loading.dismiss();
-          this.getData = r.purchase_order;
-        });
+    //   this.dbService.post_rqst( { 'purchase_id': this.id, 'karigar_id': this.dbService.karigar_id}, 'app_master/purchaseDetail').subscribe( r =>
+    //     {
+    //       this.loading.dismiss();
+    //       this.getData = r.purchase_order;
+    //     });
         
-      }
+    //   }
 
 
          

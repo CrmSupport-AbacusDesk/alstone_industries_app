@@ -10,6 +10,7 @@ import { MobileLoginPage } from '../login-section/mobile-login/mobile-login';
 import { TranslateService } from '@ngx-translate/core';
 import * as jwt_decode from "jwt-decode";
 import { DbserviceProvider } from '../../providers/dbservice/dbservice';
+import { ContactPage } from '../contact/contact';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -24,7 +25,7 @@ export class TabsPage {
   tab2Root = GiftListPage;
   tab3Root = MainHomePage;
   tab4Root = TransactionPage;
-  tab5Root = ProfilePage;
+  tab5Root = ContactPage;
   
   constructor( public storage: Storage,public navParams: NavParams,public translate:TranslateService,public db:DbserviceProvider) {
     this.index = this.navParams.get('index')
