@@ -19,6 +19,7 @@ import { OfferListPage } from '../pages/offer-list/offer-list';
 import { TransactionPage } from '../pages/transaction/transaction';
 import { GiftListPage } from '../pages/gift-gallery/gift-list/gift-list';
 import { ProfilePage } from '../pages/profile/profile';
+import { TabsPage } from '../pages/tabs/tabs';
 
 @Component({
     templateUrl: 'app.html'
@@ -80,12 +81,12 @@ export class MyApp {
                         else if(this.service.karigar_info.status == 'Verified' || r['karigar'].user_type==3)
                         {
                             // this.rootPage=HomePage;
-                            this.nav.setRoot(HomePage)
+                            // this.nav.setRoot(HomePage)
                             setTimeout(() => {
                                 
                                 this.initPushNotification();
                             }, 2000);
-                            // this.rootPage=TabsPage;
+                            this.rootPage=TabsPage;
                         } 
                         else  if( this.service.karigar_info.status != 'Verified' && (this.service.karigar_info.status != 'Verified' && r['karigar'].user_type!=3))
                         {
@@ -121,7 +122,9 @@ export class MyApp {
                     }
                     else
                     {
-                        this.nav.setRoot(HomePage);
+                        // this.nav.setRoot(HomePage);
+                        this.nav.setRoot(TabsPage);
+
                         setTimeout(() => {
                             
                             this.initPushNotification();
@@ -135,7 +138,7 @@ export class MyApp {
         platform.ready().then(() => {
             statusBar.overlaysWebView(false);
             splashScreen.hide();    
-            statusBar.backgroundColorByHexString('#ca9137');   
+            statusBar.backgroundColorByHexString('#ff0000');   
             this.get_user_lang();
         });
         
