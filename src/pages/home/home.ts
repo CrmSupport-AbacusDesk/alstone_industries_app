@@ -727,7 +727,82 @@ export class HomePage {
     }
 
     goOnPurchaseListPage() {
-        this.navCtrl.push(ContractorListPage,{'user_type':this.karigar_detail.user_type});
+
+        if (this.karigar_detail.status == 'Suspect') {
+            let alert = this.alertCtrl.create({
+                title: 'Sorry!',
+                cssClass: 'action-close',
+                subTitle: "Your current profile status is  <strong class=Suspect>“Suspect”</strong>. You can only Earn Point when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-42307700>011-42307700</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();
+            return
+        }
+
+        else if (this.karigar_detail.status == 'Pending') {
+            let alert = this.alertCtrl.create({
+                title: 'Sorry!',
+                cssClass: 'action-close status-alert',
+                subTitle: "Your current profile status is  <strong class=Pending>“Pending”</strong>. You can only Earn Point when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-42307700>011-42307700</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();
+            return
+        }
+        else if (this.karigar_detail.status == 'Reject') {
+            let alert = this.alertCtrl.create({
+                title: 'Sorry!',
+                cssClass: 'action-close status-alert',
+                subTitle: "Your current profile status is  <strong class=Reject>“Reject”</strong>. You can only Earn Point when your profile status is <strong class=Approved>“Verified”</strong>. To know more, you can call us at <a href=tel:011-42307700>011-42307700</a> or chat with us.",
+                buttons: [
+                    {
+                        // text: 'Chat With Us',
+                        //   role: 'cancel',
+                        // handler: () => {
+                        //     this.goChat();
+                        // }
+                    },
+                    {
+                        text: 'Okay',
+                        handler: () => {
+                        }
+                    }
+                ]
+            });
+            alert.present();
+            return
+        }
+        else if (this.karigar_detail.user_type == 6 && this.karigar_detail.status == 'Verified') {
+            this.navCtrl.push(ContractorListPage,{'user_type':this.karigar_detail.user_type});
+
+
+        }
     }
 
     goOnContractorPage() {

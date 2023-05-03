@@ -89,15 +89,15 @@
             </div>
          
           </div>
-          <div class="sprate-block" >
+          <!-- <div class="sprate-block" >
             <div class="upload-document" (click)="onUploadChange()" >
               <p *ngIf="conData1.image=='' || conData1.image== undefined"><i class="material-icons">add_circle</i><br>{{ 'Upload Bill' | translate}}</p>
               <img *ngIf="conData1.image != ''"[src]="conData1.image" alt="">
             </div>
             
-          </div>
+          </div> -->
 
-              <!-- <ion-item>
+              <ion-item>
                     <div class="add-new padding0" >
                         <div class="uplode-image">
                             <ul>
@@ -106,7 +106,7 @@
                                     <button><i class="material-icons" (click)="remove_image(i)">clear</i></button>
                                 </li>
                                 
-                                <li (click)="captureImage()">
+                                <li (click)="captureImage()" *ngIf="image_data.length!=5">
                                     <label>
                                         <input type="file" style="display: none;">
                                         <div class="other">
@@ -120,7 +120,7 @@
                     </div>
                     
                     
-                </ion-item> -->
+                </ion-item>
           
          
           <div class="pt32 pb16">
