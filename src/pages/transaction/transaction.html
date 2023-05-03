@@ -94,5 +94,9 @@
     </ion-infinite-scroll-content>
 </ion-infinite-scroll>
 <div class="h100"></div>
-</div>		
+</div>	
+
+<div  class="image-detail" *ngIf="transaction_detail.length==0">
+    <img src="assets/imgs/no_found.svg">
+</div>
 </ion-content>

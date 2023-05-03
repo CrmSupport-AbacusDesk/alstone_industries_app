@@ -261,23 +261,23 @@ export class RegistrationPage {
         //     this.data.whatsapp_mobile_no = "";
         // }
 
-        // if (!this.data.profile) {
-        //     this.presentToastImage('Profile image required');
-        //     return
-        // }
+        if (!this.data.profile) {
+            this.presentToastImage('Profile image required');
+            return
+        }
 
-        // if (!this.data.document_image) {
-        //     this.presentToast();
-        //     return
-        // }
+        if (!this.data.document_image) {
+            this.presentToast();
+            return
+        }
 
 
-        // if (this.data.document_type == 'Aadharcard') {
-        //     if (!this.data.document_image || !this.data.document_image_back) {
-        //         this.presentToastImage('Document image required');
-        //         return
-        //     }
-        // }
+        if (this.data.document_type == 'Aadharcard') {
+            if (!this.data.document_image || !this.data.document_image_back) {
+                this.presentToastImage('Document image required');
+                return
+            }
+        }
         if (this.data.user_type != 6) {
             this.data.dealer_id = this.data.dealer_id.id;
 

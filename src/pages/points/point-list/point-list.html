@@ -22,8 +22,8 @@
       <ion-segment [(ngModel)]="history">
         
         <ion-segment-button  value="scanned">
-          <span *ngIf="userType != 4">{{ 'Scan Points' | translate }}</span>
-          <span *ngIf="userType == 4">{{ 'Earn Points' | translate }}</span>
+          <span *ngIf="userType != 6">{{ 'Scan Points' | translate }}</span>
+          <span *ngIf="userType == 6">{{ 'Earn Points' | translate }}</span>
 
 
         </ion-segment-button>
@@ -37,7 +37,7 @@
     </div>
     
     <div [ngSwitch]="history" class="pl16 pr16 ">
-      <div *ngIf="userType != 4">
+      <div *ngIf="userType != 6">
       <ng-container *ngSwitchCase="'scanned'">
         
           <div class="no-history" *ngIf="coupon_list.length == 0">
@@ -58,16 +58,10 @@
     </div>
 
      
-      <div *ngIf="userType == 4">
+      <div *ngIf="userType == 6">
 
       <ng-container *ngSwitchCase="'scanned'" >
-        
 
-        <div class="no-history" *ngIf="purchase_list.length == 0">
-          <img src="assets/imgs/history.png">
-          <p>{{'No History' | translate}}</p>
-        </div>
-        <!-- (click)="goOnPointDetailPage(list.id)" -->
         <div class="point-block" *ngFor="let row of purchase_list;">
           <div class="point-content">
             <p>{{row.summary | translate}}</p>
@@ -75,6 +69,14 @@
           </div>
           <div class="pts">{{row.points}} PT</div>
         </div>
+        
+
+        <div class="no-history" *ngIf="purchase_list.length == 0">
+          <img src="assets/imgs/history.png">
+          <p>{{'No History' | translate}}</p>
+        </div>
+        <!-- (click)="goOnPointDetailPage(list.id)" -->
+       
     </ng-container>
       
       </div>

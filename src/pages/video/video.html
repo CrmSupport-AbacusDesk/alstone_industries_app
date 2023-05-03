@@ -17,6 +17,10 @@
         </div>
     </div>
     </div>
+
+    <div  class="image-detail" *ngIf="video_list.length==0">
+        <img src="assets/imgs/no_found.svg">
+    </div>
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)"  *ngIf="flag!=1">
         <ion-infinite-scroll-content
         loadingSpinner="bubbles"
