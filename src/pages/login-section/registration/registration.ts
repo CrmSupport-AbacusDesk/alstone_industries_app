@@ -83,7 +83,9 @@ export class RegistrationPage {
         this.translate.use(this.lang);
         if (this.data.state) {
             this.getDistrictList(this.data.state);
-            this.getSalesUserlist(this.data.state)
+            // this.getSalesUserlist(this.data.state)
+            
+            this.getDealerlist(this.data.state)
         }
         this.translate.get("Camera")
             .subscribe(resp => {
@@ -141,6 +143,30 @@ export class RegistrationPage {
 
 
     }
+    dealerList:any=[];
+    getDealerlist(state) {
+        console.log(state);
+
+        this.filter.limit = 0;
+        this.filter.state = state;
+        this.service.post_rqst({ 'filter': this.filter }, 'app_karigar/dealerList').subscribe(r => {
+            this.dealerList = r.karigars;
+            console.log(this.dealerList);
+
+            if (r.dealerList = []) {
+                console.log(this.data.dealer_id);
+                this.data.dealer_id = '';
+
+            }
+
+
+
+        });
+        // this.loading.dismiss();
+
+
+
+    }
 
 
     getstatelist() {
@@ -184,7 +210,8 @@ export class RegistrationPage {
                 if (address != null) {
                     this.data.state = result.address.state_name;
                     this.getDistrictList(this.data.state);
-                    this.getSalesUserlist(this.data.state);
+                    // this.getSalesUserlist(this.data.state);
+                    this.getDealerlist(this.data.state);
                     this.data.district = result.address.district_name;
                     this.data.city = result.address.city;
                     console.log(this.data);
@@ -196,6 +223,8 @@ export class RegistrationPage {
                     this.data.district = '';
                     this.data.city = '';
                     this.data.sales_user_id = '';
+                    this.data.dealer_id = '';
+
                     return;
                 }
             });
@@ -232,25 +261,25 @@ export class RegistrationPage {
         //     this.data.whatsapp_mobile_no = "";
         // }
 
-        if (!this.data.profile) {
-            this.presentToastImage('Profile image required');
-            return
-        }
+        // if (!this.data.profile) {
+        //     this.presentToastImage('Profile image required');
+        //     return
+        // }
 
-        if (!this.data.document_image) {
-            this.presentToast();
-            return
-        }
+        // if (!this.data.document_image) {
+        //     this.presentToast();
+        //     return
+        // }
 
 
-        if (this.data.document_type == 'Aadharcard') {
-            if (!this.data.document_image || !this.data.document_image_back) {
-                this.presentToastImage('Document image required');
-                return
-            }
-        }
-        if (this.data.user_type == 4) {
-            this.data.sales_user_id = this.data.sales_user_id.id;
+        // if (this.data.document_type == 'Aadharcard') {
+        //     if (!this.data.document_image || !this.data.document_image_back) {
+        //         this.presentToastImage('Document image required');
+        //         return
+        //     }
+        // }
+        if (this.data.user_type != 6) {
+            this.data.dealer_id = this.data.dealer_id.id;
 
         }
 
@@ -305,6 +334,13 @@ export class RegistrationPage {
                             // this.navCtrl.push(HomePage);
 
                         });
+                }
+                else if(r['status'] == "Update"){
+                    this.showSuccess('Update SuccessFully');
+                    this.navCtrl.push(TabsPage);
+
+
+
                 }
                 else if (r['status'] == "EXIST") {
                     this.translate.get("Already Registered")

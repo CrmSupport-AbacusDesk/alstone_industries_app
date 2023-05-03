@@ -20,9 +20,12 @@ export class DigitalcatalogPage {
   uploadUrl:string='';
   tokenInfo: any;
   db: any;
+  prodId:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public con:ConstantProvider, public dbService:DbserviceProvider) {
     this.uploadUrl = con.upload_url;
+    this.prodId=this.navParams.get('id')
+
     this.getpdflist();
   }
 
@@ -33,6 +36,7 @@ export class DigitalcatalogPage {
   getpdflist()
   {
     this.filter.limit=0;
+    this.filter.product_id=this.prodId
    this.dbService.post_rqst({"login_id":this.dbService.karigar_id,"filter":this.filter },"app_karigar/product_catalogue_list")
    .subscribe( r =>
      {

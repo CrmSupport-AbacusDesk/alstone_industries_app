@@ -103,7 +103,7 @@
 <div class="sidebar"  [ngClass] ="{'active' : toggle == true}"  (click)="toggleValue('true')">
     <div class="side-menu">
         <ion-list>
-            <ion-item class="transparent" (click)="goOnDigitalcatPage();">
+            <ion-item class="transparent" (click)="goOnDigitalcatPage('catelog');">
                 <ion-icon item-start color="primary">
                     <img src="assets/navigation/book.svg">
                 </ion-icon>
@@ -190,12 +190,12 @@
                 {{'Point History' | translate}}
             </ion-item>
 
-            <ion-item class="transparent" (click)="gotoChangeLang();">
+            <!-- <ion-item class="transparent" (click)="gotoChangeLang();">
                 <ion-icon item-start color="primary">
                     <img src="assets/navigation/book.svg">
                 </ion-icon>
                 {{'Change Language' | translate}}
-            </ion-item>
+            </ion-item> -->
 
             <ion-item class="transparent" (click)="goOnOffersListPage();">
                 <ion-icon item-start color="primary">
@@ -204,19 +204,19 @@
                 {{'Offers' | translate}}
             </ion-item>
 
-            <ion-item class="transparent" (click)="goOnGiftGallary();">
+            <ion-item class="transparent" (click)="goOnGiftGallary();"  *ngIf="karigar_detail.user_type == 6">
                 <ion-icon item-start color="primary">
                     <img src="assets/navigation/gift.svg">
                 </ion-icon>
                 {{'Gift Gallery' | translate}}
             </ion-item>
 
-            <ion-item class="transparent" (click)="gotoHistory();">
+            <!-- <ion-item class="transparent" (click)="gotoHistory();">
                 <ion-icon item-start color="primary">
                     <img src="assets/navigation/gift.svg">
                 </ion-icon>
                 {{'Gift Tracker' | translate}}
-            </ion-item>
+            </ion-item> -->
 
 
             <ion-item class="transparent" (click)="goRedeemType();">

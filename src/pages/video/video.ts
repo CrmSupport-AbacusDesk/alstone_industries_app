@@ -20,12 +20,14 @@ export class VideoPage {
   tokenInfo:any={};
   lang:any='';
   ok:any="";
+  prodId:any;
   constructor(public navCtrl: NavController, public navParams: NavParams,public service:DbserviceProvider,public loadingCtrl:LoadingController,public dom:DomSanitizer,private app:App,public storage:Storage,public translate:TranslateService) {
   }
   
   ionViewDidLoad()
   {
     console.log('ionViewDidLoad VideoPage');
+    this.prodId=this.navParams.get('id')
     this.get_user_lang();
     this.getVideoList();
     this.presentLoading();
@@ -33,6 +35,7 @@ export class VideoPage {
   getVideoList()
   {
     this.filter.limit = 0;
+    this.filter.product_id=this.prodId
     this.service.post_rqst({'filter' : this.filter},'app_master/videoList').subscribe( r =>
       {
         console.log(r);

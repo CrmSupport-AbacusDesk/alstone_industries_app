@@ -16,13 +16,21 @@
         <a href="{{uploadUrl + list.pdf}}">
         <div class="part1">
           <img  src="assets/imgs/pdf.png" alt="#">
-          <span>{{list.pdf_name}} -{{list.product_name}}</span>
+          <span>{{list.pdf_name}}</span>
           
 
         </div>
         </a>  
+
+        
+     
       </div>
+
     </div>
+
+    <div  class="image-detail" *ngIf="pdf.length==0">
+      <img src="assets/imgs/no_found.svg">
+  </div>
     <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)" *ngIf="flag!=1">
       <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
       </ion-infinite-scroll-content>
