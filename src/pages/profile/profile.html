@@ -97,6 +97,22 @@
                    
                     </div>
                      -->
+
+                      <div class="profile-card" *ngIf="karigar_detail.user_type != '6'">
+                        <div class="text-center">
+                            <h2>{{ 'Dealer Information' | translate }}</h2>
+                        </div>
+                        <div class="text-box">
+                            <p>{{'Company Name' | translate}}</p>
+                            <h6>{{karigar_detail.parent_counter_name ? karigar_detail.parent_counter_name:'N/A' | titlecase}}</h6>
+                        </div>
+                        
+                        <div class="text-box">
+                            <p>{{'Mobile No.' | translate}}</p>
+                            <h6>{{karigar_detail.parent_counter_mobile ? karigar_detail.parent_counter_mobile:'N/A' }}</h6>
+                        </div>
+                   
+                    </div>
                     <div class="profile-card"  *ngIf="karigar_detail.document_image && karigar_detail.document_type && karigar_detail.document_no">
                         <div class="text-center">
                             <h2>{{ 'Document Information' | translate }}</h2>

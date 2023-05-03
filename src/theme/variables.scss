@@ -5307,6 +5307,85 @@ ion-list{
         text-transform: uppercase !important;
     }
 
+    .workimg_summary {
+
+        .summary-heading {
+            margin: 16px 0px;
+            font-size: 16px;
+            font-weight: 600;
+        }
+    
+    
+        ion-list {
+            border: 0.5px solid #d8d8d8;
+            border-radius: 8px;
+            box-shadow: none !important;
+            overflow: hidden;
+    
+            h2 {
+                font-weight: 500;
+            }
+    
+            h6 {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+    
+                span.left-count {
+                    font-weight: 600;
+    
+                    &.status-pending {
+                        padding: 4px;
+                        font-size: 13px;
+                        border-radius: 4px;
+                        background: #FFF9C4;
+                    }
+    
+                    &.status-complete {
+                        padding: 4px;
+                        font-size: 13px;
+                        border-radius: 4px;
+                        background: #e7ffbd;
+                    }
+                }
+            }
+    
+            ion-avatar {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 100%;
+    
+                span {
+                    font-weight: bold;
+                    font-size: 20px;
+                }
+            }
+        }
+    
+        &.flat {
+            ion-list {
+                border: 0px;
+    
+                ion-item {
+                    border-width: 1px !important;
+                    border-bottom: 1px solid #ccc;
+    
+                    &:last-child {
+                        border-bottom: 0px;
+                    }
+                }
+    
+                ion-avatar {
+                    min-width: 50px;
+                    min-height: 50px;
+                    color: #000;
+                    border: 2px solid;
+                }
+            }
+        }
+    }
+
     .upload-doc {
         margin-top: 16px;
     

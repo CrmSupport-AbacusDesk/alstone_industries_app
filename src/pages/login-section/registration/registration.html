@@ -102,7 +102,7 @@
                     <ng-container *ngIf="data.user_type==6" >
                         <ion-item class="cs-input"
                             [ngClass]="{'error':(f.submitted && gst_number?.invalid) || (f.submitted && !gst_number.valid)}">
-                            <ion-label floating>{{'GST No.' | translate}}</ion-label>
+                            <ion-label floating>{{'GST No.' | translate}}*</ion-label>
                             <ion-input type="gst_number" name="gst_number" #gst_number="ngModel" [(ngModel)]="data.gst_number"
                                 pattern="^[0-9]{2}[A-z]{5}[0-9]{4}[A-z]{1}[1-9A-z]{1}Z[0-9A-z]{1}$" required></ion-input>
                         </ion-item>
@@ -188,7 +188,7 @@
                     <ion-item class="cs-select" [ngClass]="{'error':f.submitted && state?.invalid}">
                         <ion-label>{{'State' | translate}}*</ion-label>
                         <ion-select name="state" [(ngModel)]="data.state" #state="ngModel"
-                            (ngModelChange)="getDistrictList(data.state) || getSalesUserlist(data.state)" 
+                            (ngModelChange)="getDistrictList(data.state) || getDealerlist(data.state)" 
                             required>
                             <ion-option *ngFor="let row of state_list"
                                 value="{{row.state_name}}">{{row.state_name}}</ion-option>
@@ -215,14 +215,13 @@
                     </ion-select>
                 </ion-item> -->
 
-                    <!-- <ion-item class="cs-input" [ngClass]="{'error':f.submitted && sales_user_id?.invalid}"
-                        *ngIf="data.user_type == 4">
-                        <ion-label floating>{{'Select Sales Executive' | translate}}*</ion-label>
-                        <ionic-selectable item-content [(ngModel)]="data.sales_user_id" #sales_user_id="ngModel"
-                            [items]="sales_user_list" name="sales_user_id" itemValueField="id" 
+                    <ion-item class="cs-input" [ngClass]="{'error':f.submitted && dealer_id?.invalid}"  *ngIf="data.user_type!=6">
+                        <ion-label floating>{{'Select Dealer' | translate}}*</ion-label>
+                        <ionic-selectable item-content [(ngModel)]="data.dealer_id" #dealer_id="ngModel"
+                            [items]="dealerList" name="dealer_id" itemValueField="id" 
                             itemTextField="full_name" [hasVirtualScroll]="true" [canSearch]="true" required>
                         </ionic-selectable>
-                    </ion-item> -->
+                    </ion-item>
                 </ion-list>
             </div>
         </div>

@@ -9,6 +9,8 @@ import * as jwt_decode from "jwt-decode";
 // import { ViewProfilePage } from '../view-profile/view-profile';
 import { ConstantProvider } from '../../providers/constant/constant';
 import { FilterProductPage } from '../filter-product/filter-product';
+import { VideoPage } from '../video/video';
+import { DigitalcatalogPage } from '../digitalcatalog/digitalcatalog';
 
 @IonicPage()
 @Component({
@@ -24,6 +26,7 @@ export class ProductsPage {
     lang:any='';
     tokenInfo:any={};
     uploadUrl:any="";
+    from:any;
     constructor(public navCtrl: NavController, public navParams: NavParams,public service:DbserviceProvider,public con:ConstantProvider,public loadingCtrl:LoadingController,private app:App, public modalCtrl: ModalController,public translate:TranslateService,public storage:Storage) {
         
     }
@@ -35,7 +38,9 @@ export class ProductsPage {
     }
     ionViewWillEnter()
     {
-        this.getProductCategoryList();
+        this.from=this.navParams.get('from')
+        // this.getProductCategoryList();
+       this.getProductwiseList()
         this.presentLoading();
         
     }
@@ -64,8 +69,16 @@ export class ProductsPage {
             return null;
         }
     }
+    // goOnProductDetailPage(id){
+    //     this.navCtrl.push(ProductDetailPage,{'id':id})
+    // }
     goOnProductDetailPage(id){
-        this.navCtrl.push(ProductDetailPage,{'id':id})
+        if(this.from){
+        this.navCtrl.push(DigitalcatalogPage,{'id':id,})
+        }
+        else{
+        this.navCtrl.push(VideoPage,{'id':id,})
+        }
     }
     getProductCategoryList()
     {
@@ -150,11 +163,26 @@ export class ProductsPage {
         this.filter.search=search;
         // this.filter.limit = 0;
         // this.filter.id=id;
-        this.service.post_rqst({'filter':this.filter},'app_master/categoryList')
+        this.service.post_rqst({'filter':this.filter},'app_master/productPointsList')
         .subscribe( (r) =>
         {
             console.log(r);
             this.prod_cat_list=r['categories'];
+            // this.new_arrival_prod_list=r['category_name'];
+        });
+    }
+    prodwise_cat_list:any=[];
+    getProductwiseList()
+    {
+        // this.filter.limit = 0;
+        // this.filter.id=id;
+        this.service.post_rqst({'filter':this.filter},'app_karigar/productPointsList')
+        .subscribe( (r) =>
+        {
+            console.log(r);
+            this.prodwise_cat_list=r['product_point'];
+            this.loading.dismiss();
+
             // this.new_arrival_prod_list=r['category_name'];
         });
     }

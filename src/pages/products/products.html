@@ -6,16 +6,36 @@
 </ion-header>
 
 <ion-content padding>
-    <div class="fix" style="margin-top:40px">
+    <!-- <div class="fix" style="margin-top:40px">
         <div class="search">
             <ion-searchbar type='text' placeholder="{{'Search' | translate}}" name='search' #search="ngModel" [(ngModel)]="filter.search" 
             (ngModelChange)="getProductList(filter.search)"></ion-searchbar>
         </div>
-        <!-- <div class="link-btn">
+        <div class="link-btn">
             <a (click)="gotoProductFilterPage(filter.search)">View Product</a>
-        </div> -->
-    </div>
-    <div class="Product grid-list" >
+        </div>
+    </div> -->
+
+    <div class="container padding16"  *ngIf="prodwise_cat_list.length > 0">
+      
+        <div class="main" *ngFor="let list of prodwise_cat_list">
+          <div class="part1" (click)="goOnProductDetailPage(list.id)">
+            <ion-icon name="arrow-forward"></ion-icon>
+            <span>{{list.product_point_group}} </span>
+            
+          </div>
+        </div>
+      </div>
+
+
+    <!-- <div class="workimg_summary flat"  *ngIf="prodwise_cat_list.length > 0">
+        <ion-list no-lines>
+            <ion-item *ngFor="let list of prodwise_cat_list; let i=index" (click)="goOnProductDetailPage(list.id, list.sub_cat_count)">
+                <h6>{{list.product_point_group}} <ion-icon name="arrow-forward"></ion-icon></h6>
+            </ion-item >
+        </ion-list>
+    </div> -->
+    <!-- <div class="Product grid-list" >
         <div ion-item class="bg-product" (click)="goOnProductDetailPage(list.id)" *ngFor="let list of prod_cat_list; let i=index">
             <div class="thumbnail">
                 <ion-slides class="cs-slide" pager autoplay="1000" speed="1000" loop="true" *ngIf="list.image && list.image.length>2" >
@@ -29,16 +49,16 @@
             </div>
             
             <div class="errow">
-                <!-- For Hindi -->
-                <!-- {{lang !='en' ? list.hin_category_name : list.category_name |titlecase}} -->
+                For Hindi
+                {{lang !='en' ? list.hin_category_name : list.category_name |titlecase}}
                 <p >{{list.category_name |titlecase}}</p>
                 <i  (click)="goOnProductDetailPage(list.id)" class="material-icons">trending_flat</i>
                 
-                <!-- <p class="view-btn" *ngIf="list.description" (click)="view_description(lang !='en' ? list.hin_description : list.description, 'category description')">{{'View Description' | translate}}</p> -->
+                <p class="view-btn" *ngIf="list.description" (click)="view_description(lang !='en' ? list.hin_description : list.description, 'category description')">{{'View Description' | translate}}</p>
             </div>
         </div>
-    </div>
-
+    </div> -->
+<!--  -->
     <!-- <div class="bg-outer padding0">
         <div class="bg-inner">
             <div class="head">

@@ -701,8 +701,10 @@ export class HomePage {
     goOnGiftListPage() {
         this.navCtrl.push(GiftListPage, { 'mode': 'home' });
     }
-    goOnDigitalcatPage() {
-        this.navCtrl.push(DigitalcatalogPage);
+    goOnDigitalcatPage(from) {
+        // this.navCtrl.push(DigitalcatalogPage);
+        this.navCtrl.push(ProductsPage,{'from':from});
+
     }
 
     goOnFurniturePage() {
@@ -966,7 +968,9 @@ export class HomePage {
         this.navCtrl.push(NewsPage);
     }
     goOnVideoPage() {
-        this.navCtrl.push(VideoPage);
+        // this.navCtrl.push(VideoPage);
+        this.navCtrl.push(ProductsPage);
+
     }
     goOnContactPage() {
         this.navCtrl.push(ContactPage);

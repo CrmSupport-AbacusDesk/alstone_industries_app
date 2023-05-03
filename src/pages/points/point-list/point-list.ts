@@ -103,10 +103,6 @@ export class PointListPage {
         this.purchase_list=r['architect_purchase'];
         this.welcomePoint=r['welcome_points'];
         this.company_point_transfer=r['company_point_transfer'];
-
-
-
-
         this.karigar_point=r['karigar'];
         // this.point_transfer=r['point_transfer'];
          
