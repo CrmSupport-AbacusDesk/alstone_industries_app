@@ -19,6 +19,7 @@ export class ContactPage {
   
   ionViewDidLoad() {
     console.log('ionViewDidLoad ContactPage');
+    this.getData();
   }
   go_to_map()
   {
@@ -53,6 +54,19 @@ export class ContactPage {
         this.navCtrl.popToRoot();
       }
     }
+  }
+
+  Address:any=[];
+  headOffice:any=[];
+  getData(){
+    this.db.post_rqst('',"app_karigar/companyBranch")
+    .subscribe(resp=>{
+      console.log(resp);
+      this.headOffice = resp['head_office'];
+      this.Address = resp['branch'];
+
+    
+    })
   }
   
   get_user_lang()
