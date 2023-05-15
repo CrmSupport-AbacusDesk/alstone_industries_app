@@ -19,9 +19,12 @@
     <div class="container padding16"  *ngIf="prodwise_cat_list.length > 0">
       
         <div class="main" *ngFor="let list of prodwise_cat_list">
-          <div class="part1" (click)="goOnProductDetailPage(list.id)">
-            <ion-icon name="arrow-forward"></ion-icon>
-            <span>{{list.product_point_group}} </span>
+          <div class="part1" style="display: flex !important;justify-content: space-between;" (click)="goOnProductDetailPage(list.product_point_id)">
+            <p>{{list.product}} </p>
+            
+            <span style="justify-self: end;">
+                <ion-icon name="arrow-forward"></ion-icon>
+            </span>
             
           </div>
         </div>

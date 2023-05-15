@@ -176,11 +176,11 @@ export class ProductsPage {
     {
         // this.filter.limit = 0;
         // this.filter.id=id;
-        this.service.post_rqst({'filter':this.filter},'app_karigar/productPointsList')
+        this.service.post_rqst({'filter':this.filter},'app_karigar/getProducts')
         .subscribe( (r) =>
         {
             console.log(r);
-            this.prodwise_cat_list=r['product_point'];
+            this.prodwise_cat_list=r['product'];
             this.loading.dismiss();
 
             // this.new_arrival_prod_list=r['category_name'];
